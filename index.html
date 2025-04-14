@@ -6,28 +6,27 @@
     <meta name="description" content="Portfólio de Anderson Jr, desenvolvedor web full stack">
     <meta name="keywords" content="Portfólio, Anderson Jr, Desenvolvedor Web, Full Stack">
     <meta name="author" content="Anderson Jr">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon"> <!-- Custom favicon -->
     <title>Portfólio - Anderson Jr</title>
     <link rel="stylesheet" href="styles.css">
-<style>
-  .redonda {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
 </head>
 <body>
     <header>
         <nav>
             <ul class="nav-links">
-                <li><a href="#sobre">Sobre Mim</a></li>
-                <li><a href="#habilidades">Habilidades</a></li>
-                <li><a href="#projetos">Projetos</a></li>
-                <li><a href="#contato">Contato</a></li>
+                <li><a href="#sobre" aria-label="Ir para a seção Sobre Mim">Sobre Mim</a></li>
+                <li><a href="#habilidades" aria-label="Ir para a seção Habilidades">Habilidades</a></li>
+                <li><a href="#projetos" aria-label="Ir para a seção Projetos">Projetos</a></li>
+                <li><a href="#contato" aria-label="Ir para a seção Contato">Contato</a></li>
             </ul>
         </nav>
+        <button class="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Alternar modo escuro">🌙</button>
         <div class="header-content">
             <img src="images/anderson.png" alt="Minha imagem" class="profile-img">
             <div class="header-text">
@@ -36,18 +35,64 @@
             </div>
         </div>
     </header>
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Alternar modo escuro">🌙</button>
     <main>
         <section id="sobre">
             <h2>Sobre Mim</h2>
-            <p>Me chamo Anderson Jr., nasci em 10 de janeiro de 2009 e atuo como desenvolvedor web full stack desde 2023. Sou apaixonado por tecnologia e inovação, sempre em busca de novos desafios e aprimoramento contínuo. Trabalho no desenvolvimento de aplicações modernas, responsivas e eficientes, utilizando as mais recentes tecnologias do mercado. Tenho experiência em criar soluções escaláveis e otimizadas, focando em performance, usabilidade e boas práticas de programação.</p>
+            <p>Olá! Sou Anderson Jr., um desenvolvedor web full stack apaixonado por criar soluções inovadoras e impactantes. Desde 2023, venho transformando ideias em realidade digital, com foco em performance, usabilidade e design moderno. Acredito que a tecnologia pode mudar o mundo, e estou sempre em busca de novos desafios para crescer e contribuir com projetos incríveis.</p>
         </section>
         <section id="habilidades">
             <h2>Habilidades</h2>
-            <ul>
-                <li>HTML, CSS, JavaScript</li>
-                <li>Python, Node.js</li>
-            </ul>
+            <div class="skills">
+                <div class="skill">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML Icon">
+                    <span>HTML - 99%</span>
+                    <div class="progress-bar" data-percentage="99%">
+                        <div class="progress" style="width: 99%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS Icon">
+                    <span>CSS - 95%</span>
+                    <div class="progress-bar" data-percentage="95%">
+                        <div class="progress" style="width: 95%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript Icon">
+                    <span>JavaScript - 95%</span>
+                    <div class="progress-bar" data-percentage="95%">
+                        <div class="progress" style="width: 95%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python Icon">
+                    <span>Python - 80%</span>
+                    <div class="progress-bar" data-percentage="80%">
+                        <div class="progress" style="width: 80%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js Icon">
+                    <span>Node.js - 85%</span>
+                    <div class="progress-bar" data-percentage="85%">
+                        <div class="progress" style="width: 85%;"></div>
+                    </div>
+                </div>
+            </div>
         </section>
+
+        <section id="minhas-tecnologias">
+            <h2>Minhas Tecnologias</h2>
+            <div class="tech-icons">
+                <a href="#" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"></a>
+                <a href="#" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"></a>
+                <a href="#" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></a>
+                <a href="#" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"></a>
+                <a href="#" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js"></a>
+            </div>
+        </section>
+
         <section id="servicos">
             <h2>O que eu posso fazer por você</h2>
             <ul>
@@ -55,98 +100,291 @@
                 <li>✔️ Desenvolver sistemas com login/cadastro</li>
                 <li>✔️ Corrigir e otimizar sites existentes</li>
                 <li>✔️ Criar painéis administrativos</li>
+                <li>✔️ Criar telas de Dashboard</li>
             </ul>
         </section>
-        <section id="projetos">
+        <section id="descricao-projetos">
             <h2>Meus Projetos</h2>
+            <p>Confira alguns dos projetos que desenvolvi, com foco em tecnologias modernas e soluções inovadoras.</p>
+        </section>
+        <section id="projetos">
             <div class="projects">
-                <div class="project">
-                    <a href="https://andersonjr667.github.io/MaxOnu-/" target="_blank">
-                        <img src="images/project1.png" alt="MaxOnu 2024">
-                        <div class="project-info">
-                            <h3>MaxOnu 2024</h3>
-                            <p>Projeto de simulação da ONU para estudantes, desenvolvido com tecnologias modernas.</p>
+                <div class="project destaque">
+                    <img src="images/project1.png" alt="MaxOnu 2024">
+                    <div class="project-info">
+                        <h3>MaxOnu 2024</h3>
+                        <p>Simulação da ONU para estudantes, desenvolvida com HTML, CSS e JavaScript. Projeto focado em educação e colaboração.</p>
+                        <div class="project-buttons">
+                            <a href="https://github.com/andersonjr667/MaxOnu-" target="_blank" class="btn-ver-projeto">Ver no GitHub</a>
+                            <a href="https://andersonjr667.github.io/MaxOnu-/" target="_blank" class="btn-ver-projeto">Abrir Site</a>
                         </div>
-                    </a>
+                    </div>
                 </div>
                 <div class="project">
-                    <a href="https://maxonu.onrender.com/" target="_blank">
-                        <img src="images/project5.png" alt="MaxOnu 2025">
-                        <div class="project-info">
-                            <h3>MaxOnu 2025</h3>
-                            <p>Atualização do projeto MaxOnu com novas funcionalidades e melhorias de performance.</p>
+                    <img src="images/project5.png" alt="MaxOnu 2025">
+                    <div class="project-info">
+                        <h3>MaxOnu 2025</h3>
+                        <p>Atualização do projeto MaxOnu com novas funcionalidades e melhorias de performance.</p>
+                        <div class="project-buttons">
+                            <a href="https://github.com/andersonjr667/MaxOnu" target="_blank" class="btn-ver-projeto">Ver no GitHub</a>
+                            <a href="https://maxonu.onrender.com/" target="_blank" class="btn-ver-projeto">Abrir Site</a>
                         </div>
-                    </a>
+                    </div>
                 </div>
                 <div class="project">
-                    <a href="https://andersonjr667.github.io/Thiago-Vieira/index.html" target="_blank">
-                        <img src="images/project2.png" alt="Thiago Vieira - Arquiteto e Empresário">
-                        <div class="project-info">
-                            <h3>Thiago Vieira - Arquiteto e Empresário</h3>
-                            <p>Site para arquiteto e empresário, destacando seus projetos e serviços.</p>
+                    <img src="images/project2.png" alt="Thiago Vieira - Arquiteto e Empresário">
+                    <div class="project-info">
+                        <h3>Thiago Vieira - Arquiteto e Empresário</h3>
+                        <p>Site para arquiteto e empresário, destacando seus projetos e serviços.</p>
+                        <div class="project-buttons">
+                            <a href="https://github.com/andersonjr667/Thiago-Vieira" target="_blank" class="btn-ver-projeto">Ver no GitHub</a>
+                            <a href="https://andersonjr667.github.io/Thiago-Vieira/index.html" target="_blank" class="btn-ver-projeto">Abrir Site</a>
                         </div>
-                    </a>
+                    </div>
                 </div>
                 <div class="project">
-                    <a href="https://andersonjr667.github.io/MaxFit/" target="_blank">
-                        <img src="images/project3.png" alt="MaxFit">
-                        <div class="project-info">
-                            <h3>MaxFit</h3>
-                            <p>Site de uma academia fitness onde as pessoas possam assinar planos e entrar em contato com a academia.</p>
+                    <img src="images/project3.png" alt="MaxFit">
+                    <div class="project-info">
+                        <h3>MaxFit</h3>
+                        <p>Site de uma academia fitness onde as pessoas possam assinar planos e entrar em contato com a academia.</p>
+                        <div class="project-buttons">
+                            <a href="https://github.com/andersonjr667/MaxFit" target="_blank" class="btn-ver-projeto">Ver no GitHub</a>
+                            <a href="https://andersonjr667.github.io/MaxFit/" target="_blank" class="btn-ver-projeto">Abrir Site</a>
                         </div>
-                    </a>
+                    </div>
                 </div>
-                <div class="project">
-                    <a href="https://boaparte.onrender.com/" target="_blank">
-                        <img src="images/project4.png" alt="Boa Parte">
-                        <div class="project-info">
-                            <h3>Boa Parte</h3>
-                            <p>Plataforma de gestão dos visitantes de uma igreja facilitando a visualização dos visitantes.</p>
-                        </div>
-                    </a>
+            </div>
+        </section>
+        <section id="minhas-conquistas">
+            <h2>Minhas Conquistas</h2>
+            <ul>
+                <li>✨ Participação no projeto escolar MaxOnu 2024 e atualmente também no MaxOnu 2025</li>
+                <li>🎓 Certificação Full Stack Developer</li>
+                <li>📚 Participação em eventos de tecnologia como desenvolvedor de site</li>
+            </ul>
+        </section>
+        <section id="depoimentos">
+            <h2>Depoimentos</h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <p>"Anderson é um profissional incrível! Ele entregou o projeto antes do prazo e com uma qualidade excepcional."</p>
+                    <h4>- Cliente Satisfeito</h4>
                 </div>
-                <div class="project">
-                    <a href="https://escoladeesporte.onrender.com/" target="_blank">
-                        <img src="images/project6.png" alt="Escola de Esporte">
-                        <div class="project-info">
-                            <h3>Escola de Esporte</h3>
-                            <p>Plataforma para gestão de atividades esportivas e inscrição de alunos em uma escola de esportes.</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="project">
-                    <a href="https://novoprojeto.onrender.com/" target="_blank">
-                        <img src="images/project7.png" alt="Novo Projeto">
-                        <div class="project-info">
-                            <h3>Exemplo de site</h3>
-                            <p>Um exemplo simples de um site que posso desenvolver para você.</p>
-                        </div>
-                    </a>
+                <div class="testimonial">
+                    <p>"Trabalhar com Anderson foi uma experiência fantástica. Ele é muito atencioso e domina as tecnologias mais modernas."</p>
+                    <h4>- Outro Cliente</h4>
                 </div>
             </div>
         </section>
         <section id="contato">
             <h2>Contato</h2>
-             <p>Entre em contato comigo pelo WhatsApp:</p>
-            <a href="https://wa.me/5531971533882" target="_blank" class="whatsapp-btn">Fale comigo no WhatsApp</a>
-            <p>Email: <a href="mailto:alsj1520@gmail.com">alsj1520@gmail.com</a></p>
-            <p>GitHub: <a href="https://github.com/andersonjr667">https://github.com/andersonjr667</a></p>
+            <p>Entre em contato pelo WhatsApp:</p>
+            <a href="https://wa.me/5531971533882" target="_blank" class="whatsapp-btn">
+                <i class="fab fa-whatsapp"></i> Fale comigo no WhatsApp
+            </a>
+            <p>Email: <a href="mailto:alsj1520@gmail.com"><i class="fas fa-envelope"></i> alsj1520@gmail.com</a></p>
+            <p>GitHub: <a href="https://github.com/andersonjr667" target="_blank"><i class="fab fa-github"></i> https://github.com/andersonjr667</a></p>
         </section>
     </main>
     <footer>
         <div class="footer-content">
             <p>&copy; 2025 Anderson Jr - Todos os direitos reservados</p>
             <ul class="social-links">
-                <li><a href="https://linkedin.com/in/seuperfil" target="_blank">LinkedIn</a></li>
-                <li><a href="https://github.com/andersonjr667" target="_blank">GitHub</a></li>
-                <li><a href="mailto:alsj1520@gmail.com">Email</a></li>
+                <li><a href="https://linkedin.com/in/seuperfil" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                <li><a href="https://github.com/andersonjr667" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
+                <li><a href="mailto:alsj1520@gmail.com"><i class="fas fa-envelope"></i> Email</a></li>
             </ul>
         </div>
+        <button id="backToTop" onclick="scrollToTop()">Voltar ao Topo</button>
     </footer>
+    <button id="whatsapp-fixed" onclick="window.open('https://wa.me/5531971533882', '_blank')" aria-label="Contato via WhatsApp">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+    </button>
     <div id="imageModal" class="modal">
         <span class="close" onclick="closeImage()">&times;</span>
         <img class="modal-content" id="modalImage">
     </div>
     <script src="script.js"></script>
+    <script>
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Smooth scroll to section
+        document.querySelectorAll('.nav-links a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        window.onscroll = function () {
+            const backToTop = document.getElementById('backToTop');
+            const whatsappFixed = document.getElementById('whatsapp-fixed');
+            if (document.documentElement.scrollTop > 200) {
+                backToTop.style.display = 'block';
+                whatsappFixed.style.bottom = '80px'; // Move WhatsApp button above "Voltar ao Topo"
+            } else {
+                backToTop.style.display = 'none';
+                whatsappFixed.style.bottom = '20px'; // Default position for WhatsApp button
+            }
+        };
+    </script>
+    <style>
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #25D366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #1DA851;
+        }
+
+        .project a:hover img {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+
+        .project a:hover .project-info {
+            background-color: #f0f0f0;
+            transition: background-color 0.3s ease;
+        }
+
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        #backToTop:hover {
+            background-color: #555;
+        }
+
+        #whatsapp-fixed {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            cursor: pointer;
+            transition: bottom 0.3s ease, transform 0.3s ease;
+        }
+
+        #whatsapp-fixed:hover {
+            transform: scale(1.1);
+        }
+
+        .social-links a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #0073b1; /* LinkedIn blue */
+        }
+
+        body.dark-mode {
+            background-color: #181818; /* Fundo mais escuro */
+            color: #d4d4d4; /* Texto mais claro */
+        }
+
+        body.dark-mode header {
+            background: #222; /* Fundo do cabeçalho */
+            color: #f0f0f0; /* Texto claro */
+        }
+
+        body.dark-mode section {
+            background: #242424; /* Fundo das seções */
+            color: #e0e0e0; /* Texto claro */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        body.dark-mode a {
+            color: #4caf50; /* Links em verde */
+        }
+
+        body.dark-mode a:hover {
+            color: #81c784; /* Verde mais claro ao passar o mouse */
+        }
+
+        body.dark-mode footer {
+            background: #222; /* Fundo do rodapé */
+            color: #f0f0f0; /* Texto claro */
+        }
+
+        body.dark-mode .project-info {
+            background: #333; /* Fundo dos projetos */
+        }
+
+        .certificates {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .certificate {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            text-align: center;
+            width: 300px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .certificate:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .certificate img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .certificate h3 {
+            margin: 10px 0;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .certificate p {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        body.dark-mode .certificate {
+            background: #333;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .certificate h3 {
+            color: #4caf50;
+        }
+
+        body.dark-mode .certificate p {
+            color: #bdbdbd;
+        }
+    </style>
 </body>
 </html>

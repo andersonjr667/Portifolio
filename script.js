@@ -47,6 +47,11 @@ function closeImage() {
     startAutoSlide();
 }
 
+// Scroll suave para o botão "Voltar ao Topo"
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 // Inicializa o carrossel quando a página carregar
 document.addEventListener('DOMContentLoaded', () => {
     const items = document.querySelectorAll('.carousel img');

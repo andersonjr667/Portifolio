@@ -6,6 +6,152 @@ body {
     color: #333;
 }
 
+body.dark-mode {
+    background-color: #101010; /* Fundo mais escuro */
+    color: #e5e5e5; /* Texto mais claro */
+}
+
+body.dark-mode header {
+    background: #1e1e1e; /* Fundo do cabeçalho */
+    color: #ffffff; /* Texto claro */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra mais pronunciada */
+}
+
+body.dark-mode section {
+    background: #1c1c1c; /* Fundo das seções */
+    color: #dcdcdc; /* Texto claro */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra mais pronunciada */
+    border: 1px solid #333; /* Borda sutil */
+}
+
+body.dark-mode a {
+    color: #4caf50; /* Links em verde */
+    text-decoration: none;
+}
+
+body.dark-mode a:hover {
+    color: #81c784; /* Verde mais claro ao passar o mouse */
+}
+
+body.dark-mode footer {
+    background: #1e1e1e; /* Fundo do rodapé */
+    color: #dcdcdc; /* Texto claro */
+    border-top: 1px solid #333; /* Borda sutil */
+}
+
+body.dark-mode .project {
+    background: #1a1a1a; /* Fundo dos projetos */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7); /* Sombra mais pronunciada */
+    border: 2px solid #333; /* Borda escura */
+}
+
+body.dark-mode .project-info h3 {
+    color: #4caf50; /* Títulos dos projetos em verde claro */
+}
+
+body.dark-mode button {
+    background-color: #2e7d32; /* Botões em verde escuro */
+    color: #fff;
+    border: 1px solid #388e3c; /* Borda verde */
+}
+
+body.dark-mode button:hover {
+    background-color: #388e3c; /* Verde mais claro ao passar o mouse */
+}
+
+body.dark-mode .project-info {
+    background: #1e1e1e; /* Fundo dos projetos */
+    color: #dcdcdc; /* Texto claro */
+}
+
+body.dark-mode .certificate {
+    background: #1a1a1a; /* Fundo dos certificados */
+    color: #e0e0e0; /* Texto claro */
+    border: 1px solid #333; /* Borda sutil */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra mais pronunciada */
+}
+
+body.dark-mode .certificate h3 {
+    color: #4caf50; /* Títulos dos certificados em verde */
+}
+
+body.dark-mode .certificate p {
+    color: #bdbdbd; /* Texto dos certificados */
+}
+
+body.dark-mode .nav-links a {
+    color: #81c784; /* Links do menu em verde claro */
+}
+
+body.dark-mode .nav-links a:hover {
+    color: #a5d6a7; /* Verde mais claro ao passar o mouse */
+}
+
+body.dark-mode .skills .skill img {
+    filter: brightness(0.8); /* Ajusta o brilho dos ícones */
+}
+
+body.dark-mode .skills .skill span {
+    color: #c8e6c9; /* Texto das habilidades em verde claro */
+}
+
+body.dark-mode .progress-bar {
+    background-color: #333; /* Fundo da barra de progresso */
+}
+
+body.dark-mode .progress {
+    background-color: #4caf50; /* Barra de progresso em verde */
+}
+
+body.dark-mode .social-links a {
+    color: #81c784; /* Links das redes sociais em verde claro */
+}
+
+body.dark-mode .social-links a:hover {
+    color: #a5d6a7; /* Verde mais claro ao passar o mouse */
+}
+
+body.dark-mode .testimonial {
+    background: #1a1a1a; /* Fundo dos depoimentos */
+    color: #dcdcdc; /* Texto claro */
+    border: 1px solid #333; /* Borda sutil */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra mais pronunciada */
+}
+
+body.dark-mode .testimonial h4 {
+    color: #81c784; /* Nome do cliente em verde claro */
+}
+
+body.dark-mode .modal {
+    background-color: rgba(0, 0, 0, 0.9); /* Fundo do modal mais escuro */
+}
+
+body.dark-mode .close {
+    color: #ffffff; /* Ícone de fechar em branco */
+}
+
+body.dark-mode .close:hover {
+    color: #81c784; /* Verde claro ao passar o mouse */
+}
+
+body.dark-mode .whatsapp-btn {
+    background-color: #25D366; /* Verde do WhatsApp */
+    color: #ffffff; /* Texto branco para visibilidade */
+}
+
+body.dark-mode .whatsapp-btn:hover {
+    background-color: #1DA851; /* Verde mais escuro ao passar o mouse */
+}
+
+body.dark-mode .btn-ver-projeto {
+    background-color: #388e3c; /* Botões em verde escuro */
+    color: #fff;
+}
+
+body.dark-mode .btn-ver-projeto:hover {
+    background-color: #4caf50; /* Verde mais claro ao passar o mouse */
+}
+
 header {
     background: #2e7d32; /* Verde escuro */
     color: #fff;
@@ -99,7 +245,7 @@ footer {
     transition: color 0.3s;
 }
 
-.social-links a:hover {
+social-links a:hover {
     color: #c8e6c9; /* Verde claro */
 }
 
@@ -110,38 +256,68 @@ footer {
     gap: 20px;
 }
 
+/* Ajuste para exibir até 4 projetos lado a lado */
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Exibe até 4 colunas */
+    gap: 20px; /* Espaçamento entre os cards */
+    justify-content: center; /* Centraliza os cards */
+}
+
 .project {
     width: 300px;
     text-align: center;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: #f9f9f9; /* Fundo harmonizado */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra inicial */
     overflow: hidden;
-    transition: transform 0.3s;
+    transition: all 0.3s ease; /* Transição suave */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+    border: 2px solid #ddd; /* Borda clara */
+    padding: 10px; /* Espaçamento interno */
 }
 
 .project:hover {
-    transform: translateY(-5px);
+    transform: scale(1.03); /* Leve aumento no tamanho */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra mais pronunciada */
 }
 
 .project img {
     width: 100%;
-    height: auto;
-    border-bottom: 2px solid #ddd;
+    height: 200px;
+    object-fit: cover; /* Garante que a imagem não fique cortada */
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px 8px 0 0; /* Bordas arredondadas no topo */
 }
 
 .project-info {
     padding: 15px;
+    min-height: 120px; /* Altura mínima para alinhar os textos */
 }
 
 .project-info h3 {
     margin: 10px 0;
-    font-size: 1.2em;
+    font-size: 1.4em; /* Tamanho maior */
+    font-weight: bold; /* Negrito */
+    color: #333; /* Cor harmonizada */
 }
 
 .project-info p {
     font-size: 0.9em;
     color: #666;
+}
+
+.project a:hover img {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+.project a:hover .project-info {
+    background-color: #f0f0f0;
+    transition: background-color 0.3s ease;
 }
 
 .lightbox-back-button {
@@ -200,6 +376,153 @@ footer {
     cursor: pointer;
 }
 
+button {
+    background-color: #2e7d32;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    position: fixed; /* Fixar posição */
+    bottom: 20px; /* Distância do rodapé */
+    right: 20px; /* Distância da lateral direita */
+    z-index: 1000; /* Garantir que fique acima de outros elementos */
+}
+
+button:hover {
+    background-color: #1b5e20;
+    transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
+}
+
+button.dark-mode-toggle {
+    background-color: #444; /* Botão para modo escuro */
+    color: #fff;
+    border: none;
+    width: 40px; /* Tamanho quadrado */
+    height: 40px;
+    border-radius: 5px; /* Bordas levemente arredondadas */
+    cursor: pointer;
+    position: absolute; /* Posicionar no header */
+    top: 20px; /* Distância do topo */
+    right: 20px; /* Distância da lateral direita */
+    z-index: 1000; /* Garantir que fique acima de outros elementos */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button.dark-mode-toggle:hover {
+    background-color: #666; /* Cinza mais claro ao passar o mouse */
+    transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
+}
+
+.skills {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.skill {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.skill img {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+}
+
+.skill span {
+    font-weight: bold;
+    flex: 1;
+    font-size: 16px;
+}
+
+.progress-bar {
+    background-color: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 15px;
+    flex: 2;
+    position: relative;
+}
+
+.progress-bar::after {
+    content: attr(data-percentage);
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.progress {
+    background-color: #2e7d32; /* Verde escuro */
+    height: 100%;
+    transition: width 0.3s;
+    border-radius: 5px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.contact-form button {
+    background-color: #2e7d32;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: #1b5e20;
+}
+
+#backToTop {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+#backToTop:hover {
+    background-color: #555;
+}
+
+body {
+    /* Show "Back to Top" button when scrolling */
+    scroll-behavior: smooth;
+}
+
 @media (max-width: 768px) {
     .header-content {
         flex-direction: column;
@@ -211,11 +534,328 @@ footer {
     }
 
     .projects {
-        flex-direction: column;
+        flex-direction: column; /* Exibir em uma única coluna */
         align-items: center;
+        gap: 20px; /* Espaçamento entre os cards */
     }
 
     .project {
-        width: 90%;
+        width: 90%; /* Ocupa 90% da largura da tela */
     }
+
+    section {
+        padding: 15px; /* Reduz o espaçamento interno */
+        margin: 10px; /* Reduz o espaçamento externo */
+    }
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .projects {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajusta para telas menores */
+    }
+}
+
+#whatsapp-fixed {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    cursor: pointer;
+    transition: bottom 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#whatsapp-fixed:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+#whatsapp-fixed img {
+    width: 40px;
+    height: 40px;
+}
+
+@media (max-width: 768px) {
+    #whatsapp-fixed {
+        max-width: 100%; /* Ocupa toda a largura */
+        display: block; /* Exibe como bloco */
+        bottom: 10px; /* Ajusta a posição */
+        right: 10px;
+    }
+
+    .projects {
+        flex-direction: column; /* Exibir em uma única coluna */
+        align-items: center;
+        gap: 20px; /* Espaçamento entre os cards */
+    }
+
+    section {
+        padding: 15px; /* Reduz o espaçamento interno */
+        margin: 10px; /* Reduz o espaçamento externo */
+    }
+}
+
+.whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #25D366;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+    background-color: #1DA851;
+}
+
+.skills .skill img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.projects .project {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.projects .project:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.projects .project.destaque {
+    border: 2px solid #ff9800;
+    border-radius: 8px;
+}
+
+.projects .project img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.certificates {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.certificate {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+    width: 300px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.certificate:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.certificate img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.certificate h3 {
+    margin: 10px 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.certificate p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* Animação suave de hover nos botões */
+button, .whatsapp-btn, .project a {
+    transition: all 0.3s ease; /* Transição suave */
+}
+
+button:hover, .whatsapp-btn:hover, .project a:hover {
+    transform: scale(1.03); /* Leve aumento no tamanho */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra suave */
+}
+
+/* Estilo para a descrição acima dos projetos */
+#descricao-projetos {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#descricao-projetos p {
+    font-size: 1.1em;
+    color: #666;
+}
+
+/* Botão "Ver Projeto" */
+.btn-ver-projeto {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #2e7d32;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-ver-projeto:hover {
+    background-color: #1b5e20;
+    transform: scale(1.05);
+}
+
+/* Nova seção: Minhas Tecnologias */
+#minhas-tecnologias {
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.tech-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.tech-icons img {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s ease;
+}
+
+.tech-icons img:hover {
+    transform: scale(1.2);
+}
+
+/* Nova seção: Minhas Conquistas */
+#minhas-conquistas {
+    padding: 20px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+}
+
+#minhas-conquistas ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#minhas-conquistas li {
+    font-size: 1.1em;
+    margin: 10px 0;
+}
+
+/* Nova seção: Artigos */
+#artigos {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+#artigos ul {
+    list-style: none;
+    padding: 0;
+}
+
+#artigos li {
+    margin: 10px 0;
+}
+
+#artigos a {
+    color: #2e7d32;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#artigos a:hover {
+    text-decoration: underline;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilo para a seção Minhas Tecnologias */
+#minhas-tecnologias {
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#minhas-tecnologias h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.tech-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.tech-icons img {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s ease;
+}
+
+.tech-icons img:hover {
+    transform: scale(1.2);
+}
+
+/* Estilo para os botões dos projetos */
+.project-buttons {
+    display: flex;
+    justify-content: center; /* Centraliza os botões */
+    gap: 15px; /* Espaçamento entre os botões */
+    margin-top: 10px;
+}
+
+.btn-ver-projeto {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #2e7d32;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-ver-projeto:hover {
+    background-color: #1b5e20;
+    transform: scale(1.05);
 }
