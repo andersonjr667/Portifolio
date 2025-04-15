@@ -6,7 +6,18 @@
     <meta name="description" content="Portfólio de Anderson Jr, desenvolvedor web full stack">
     <meta name="keywords" content="Portfólio, Anderson Jr, Desenvolvedor Web, Full Stack">
     <meta name="author" content="Anderson Jr">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon"> <!-- Custom favicon -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" id="favicon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" id="favicon">
+    <style>
+        /* Estilo para moldura redonda no favicon */
+        #favicon {
+            border-radius: 50%;
+            border: 3px solid #2b9bbd; /* Cor da moldura */
+            background: #fff; /* Fundo da moldura */
+            padding: 2px; /* Espaço entre a moldura e o ícone */
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.2); /* Sombra para destaque */
+        }
+    </style>
     <title>Portfólio - Anderson Jr</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -28,10 +39,10 @@
         </nav>
         <button class="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Alternar modo escuro">🌙</button>
         <div class="header-content">
-            <img src="images/anderson.png" alt="Minha imagem" class="profile-img">
+            <img src="images/anderson.png" alt="Minha imagem" class="profile-img" style="width:110px;height:110px;">
             <div class="header-text">
-                <h1>Anderson Jr</h1>
-                <p>Desenvolvedor Web Full Stack</p>
+                <h1 style="font-size:2.1em;">Anderson Jr</h1>
+                <p style="font-size:1.18em;">Desenvolvedor Web Full Stack</p>
             </div>
         </div>
     </header>
@@ -43,41 +54,32 @@
         </section>
         <section id="habilidades">
             <h2>Habilidades</h2>
+            <ul class="habilidades-lista">
+                <li>Desenvolvimento Front-end e Back-end</li>
+                <li>Criação de aplicações web responsivas</li>
+                <li>Bancos de dados MongoDB</li>
+                <li>Manutenção e atualização de sistemas</li>
+            </ul>
             <div class="skills">
                 <div class="skill">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML Icon">
-                    <span>HTML - 99%</span>
-                    <div class="progress-bar" data-percentage="99%">
-                        <div class="progress" style="width: 99%;"></div>
-                    </div>
+                    <span>HTML - Desenvolvimento de estruturas web semânticas e acessíveis</span>
                 </div>
                 <div class="skill">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS Icon">
-                    <span>CSS - 95%</span>
-                    <div class="progress-bar" data-percentage="95%">
-                        <div class="progress" style="width: 95%;"></div>
-                    </div>
+                    <span>CSS - Criação de layouts responsivos e animações</span>
                 </div>
                 <div class="skill">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript Icon">
-                    <span>JavaScript - 95%</span>
-                    <div class="progress-bar" data-percentage="95%">
-                        <div class="progress" style="width: 95%;"></div>
-                    </div>
+                    <span>JavaScript - Desenvolvimento de interatividade e funcionalidades dinâmicas</span>
                 </div>
                 <div class="skill">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python Icon">
-                    <span>Python - 80%</span>
-                    <div class="progress-bar" data-percentage="80%">
-                        <div class="progress" style="width: 80%;"></div>
-                    </div>
+                    <span>Python - Automação e desenvolvimento backend</span>
                 </div>
                 <div class="skill">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js Icon">
-                    <span>Node.js - 85%</span>
-                    <div class="progress-bar" data-percentage="85%">
-                        <div class="progress" style="width: 85%;"></div>
-                    </div>
+                    <span>Node.js - Criação de APIs e aplicações servidor</span>
                 </div>
             </div>
         </section>
@@ -90,17 +92,20 @@
                 <a href="#" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></a>
                 <a href="#" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"></a>
                 <a href="#" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js"></a>
+                <a href="#" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"></a>
+                <a href="#" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"></a>
+                <a href="#" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB"></a>
             </div>
         </section>
 
         <section id="servicos">
             <h2>O que eu posso fazer por você</h2>
             <ul>
-                <li>✔️ Criar sites responsivos</li>
-                <li>✔️ Desenvolver sistemas com login/cadastro</li>
-                <li>✔️ Corrigir e otimizar sites existentes</li>
-                <li>✔️ Criar painéis administrativos</li>
-                <li>✔️ Criar telas de Dashboard</li>
+                <li>✅ Criar sites responsivos</li>
+                <li>✅ Desenvolver sistemas com login/cadastro</li>
+                <li>✅ Corrigir e otimizar sites existentes</li>
+                <li>✅ Criar painéis administrativos</li>
+                <li>✅ Criar telas de Dashboard</li>
             </ul>
         </section>
         <section id="descricao-projetos">
@@ -168,11 +173,11 @@
             <div class="testimonials">
                 <div class="testimonial">
                     <p>"Anderson é um profissional incrível! Ele entregou o projeto antes do prazo e com uma qualidade excepcional."</p>
-                    <h4>- Cliente Satisfeito</h4>
+                    <h4>- Josefa</h4>
                 </div>
                 <div class="testimonial">
                     <p>"Trabalhar com Anderson foi uma experiência fantástica. Ele é muito atencioso e domina as tecnologias mais modernas."</p>
-                    <h4>- Outro Cliente</h4>
+                    <h4>- Fabiana</h4>
                 </div>
             </div>
         </section>
@@ -182,7 +187,7 @@
             <a href="https://wa.me/5531971533882" target="_blank" class="whatsapp-btn">
                 <i class="fab fa-whatsapp"></i> Fale comigo no WhatsApp
             </a>
-            <p>Email: <a href="mailto:alsj1520@gmail.com"><i class="fas fa-envelope"></i> alsj1520@gmail.com</a></p>
+            <p>Email: <a href="mailto:alsj1520@gmail.com" class="email-protected">a***@gmail.com</a></p>
             <p>GitHub: <a href="https://github.com/andersonjr667" target="_blank"><i class="fab fa-github"></i> https://github.com/andersonjr667</a></p>
         </section>
     </main>
@@ -195,9 +200,9 @@
                 <li><a href="mailto:alsj1520@gmail.com"><i class="fas fa-envelope"></i> Email</a></li>
             </ul>
         </div>
-        <button id="backToTop" onclick="scrollToTop()">Voltar ao Topo</button>
+        <button id="backToTop" onclick="scrollToTop()"></button>
     </footer>
-    <button id="whatsapp-fixed" onclick="window.open('https://wa.me/5531971533882', '_blank')" aria-label="Contato via WhatsApp">
+    <button id="whatsapp-fixed" onclick="window.open('https://wa.me/5531971533882', '_blank')" aria-label="Contato via WhatsApp" style="bottom: 100px;">
         <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
     </button>
     <div id="imageModal" class="modal">
@@ -210,7 +215,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Smooth scroll to section
         document.querySelectorAll('.nav-links a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -225,166 +229,12 @@
             const whatsappFixed = document.getElementById('whatsapp-fixed');
             if (document.documentElement.scrollTop > 200) {
                 backToTop.style.display = 'block';
-                whatsappFixed.style.bottom = '80px'; // Move WhatsApp button above "Voltar ao Topo"
+                whatsappFixed.style.bottom = '80px';
             } else {
                 backToTop.style.display = 'none';
-                whatsappFixed.style.bottom = '20px'; // Default position for WhatsApp button
+                whatsappFixed.style.bottom = '20px';
             }
         };
     </script>
-    <style>
-        .whatsapp-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background-color: #25D366;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-
-        .whatsapp-btn:hover {
-            background-color: #1DA851;
-        }
-
-        .project a:hover img {
-            transform: scale(1.05);
-            transition: transform 0.3s ease;
-        }
-
-        .project a:hover .project-info {
-            background-color: #f0f0f0;
-            transition: background-color 0.3s ease;
-        }
-
-        #backToTop {
-            display: none;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #333;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: opacity 0.3s ease;
-        }
-
-        #backToTop:hover {
-            background-color: #555;
-        }
-
-        #whatsapp-fixed {
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            cursor: pointer;
-            transition: bottom 0.3s ease, transform 0.3s ease;
-        }
-
-        #whatsapp-fixed:hover {
-            transform: scale(1.1);
-        }
-
-        .social-links a {
-            color: inherit;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: #0073b1; /* LinkedIn blue */
-        }
-
-        body.dark-mode {
-            background-color: #181818; /* Fundo mais escuro */
-            color: #d4d4d4; /* Texto mais claro */
-        }
-
-        body.dark-mode header {
-            background: #222; /* Fundo do cabeçalho */
-            color: #f0f0f0; /* Texto claro */
-        }
-
-        body.dark-mode section {
-            background: #242424; /* Fundo das seções */
-            color: #e0e0e0; /* Texto claro */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-        }
-
-        body.dark-mode a {
-            color: #4caf50; /* Links em verde */
-        }
-
-        body.dark-mode a:hover {
-            color: #81c784; /* Verde mais claro ao passar o mouse */
-        }
-
-        body.dark-mode footer {
-            background: #222; /* Fundo do rodapé */
-            color: #f0f0f0; /* Texto claro */
-        }
-
-        body.dark-mode .project-info {
-            background: #333; /* Fundo dos projetos */
-        }
-
-        .certificates {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-
-        .certificate {
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 15px;
-            text-align: center;
-            width: 300px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .certificate:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .certificate img {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-
-        .certificate h3 {
-            margin: 10px 0;
-            font-size: 1.2em;
-            color: #333;
-        }
-
-        .certificate p {
-            font-size: 0.9em;
-            color: #666;
-        }
-
-        body.dark-mode .certificate {
-            background: #333;
-            color: #e0e0e0;
-        }
-
-        body.dark-mode .certificate h3 {
-            color: #4caf50;
-        }
-
-        body.dark-mode .certificate p {
-            color: #bdbdbd;
-        }
-    </style>
 </body>
 </html>
