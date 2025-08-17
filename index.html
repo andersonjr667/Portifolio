@@ -1,240 +1,970 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfólio de Anderson Jr, desenvolvedor web full stack">
-    <meta name="keywords" content="Portfólio, Anderson Jr, Desenvolvedor Web, Full Stack">
-    <meta name="author" content="Anderson Jr">
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" id="favicon">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon" id="favicon">
+    <title>Anderson Jr. | Desenvolvedor Full Stack</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     <style>
-        /* Estilo para moldura redonda no favicon */
-        #favicon {
+        :root {
+            --verde-claro: #99CD85;
+            --verde-bege: #CFE0BC;
+            --verde-oliva: #7FA653;
+            --verde-musgo: #63783D;
+            --verde-agua: #99CD85;
+            
+            --primary: var(--verde-oliva);
+            --primary-dark: var(--verde-musgo);
+            --secondary: var(--verde-claro);
+            --light: #f8fafc;
+            --dark: #2c3e50;
+            --light-dark: #3a506b;
+            --light-gray: #e2e8f0;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            scroll-behavior: smooth;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            text-align: center;
+            position: relative;
+            color: var(--verde-musgo);
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            color: var(--light-dark);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--primary-dark);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: var(--primary);
+            color: white;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: 2px solid var(--primary);
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            padding: 20px 0;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--dark);
+            font-weight: 500;
+            position: relative;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(135deg, var(--verde-bege) 0%, #d1e7c7 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--verde-musgo);
+        }
+        
+        .hero h1 span {
+            color: var(--primary);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--light-dark);
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--verde-musgo);
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+            color: var(--light-dark);
+        }
+        
+        .about-img {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, var(--verde-claro) 0%, var(--verde-bege) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        /* Skills Section */
+        .skills {
+            background: linear-gradient(135deg, #e8f5e9 0%, #d1e7c7 100%);
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-category {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 4px solid var(--verde-claro);
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .skill-category h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .skill-category h3 i {
+            color: var(--primary);
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-list li {
+            padding: 10px 0;
+            border-bottom: 1px dashed var(--light-gray);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .skill-list li i {
+            color: var(--secondary);
+        }
+        
+        /* Projects Section */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 4px solid var(--verde-claro);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .project-img {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-align: center;
+            padding: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .project-content {
+            padding: 25px;
+        }
+        
+        .project-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .project-content p {
+            color: var(--light-dark);
+            margin-bottom: 20px;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .tech-tag {
+            background: var(--verde-bege);
+            color: var(--verde-musgo);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        /* Achievements Section */
+        .achievements {
+            background: linear-gradient(135deg, #e8f5e9 0%, #d1e7c7 100%);
+        }
+        
+        .achievements-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .achievement-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            border-top: 4px solid var(--verde-claro);
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .achievement-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .achievement-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .achievement-card p {
+            color: var(--light-dark);
+        }
+        
+        /* Testimonials Section */
+        .testimonials-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            position: relative;
+            border-top: 4px solid var(--verde-claro);
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--light-gray);
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .testimonial-card p {
+            font-style: italic;
+            color: var(--light-dark);
+            padding-left: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-left: 30px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            border: 3px solid #2b9bbd; /* Cor da moldura */
-            background: #fff; /* Fundo da moldura */
-            padding: 2px; /* Espaço entre a moldura e o ícone */
-            box-shadow: 0 0 6px rgba(0, 0, 0, 0.2); /* Sombra para destaque */
+            background: var(--verde-bege);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--verde-musgo);
+            font-weight: 600;
+        }
+        
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .author-info p {
+            font-style: normal;
+            color: var(--light-dark);
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #e8f5e9 0%, #d1e7c7 100%);
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--verde-musgo);
+        }
+        
+        .contact-methods {
+            list-style: none;
+            margin-top: 30px;
+        }
+        
+        .contact-methods li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-methods i {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        .contact-methods a {
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .contact-methods a:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--verde-musgo);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        footer p {
+            margin: 0;
+            color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content, .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-content .contact-form {
+                order: -1;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 40px;
+                transition: var(--transition);
+                box-shadow: var(--shadow);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
         }
     </style>
-    <title>Portfólio - Anderson Jr</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script>
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-        }
-    </script>
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#sobre" aria-label="Ir para a seção Sobre Mim">Sobre Mim</a></li>
-                <li><a href="#habilidades" aria-label="Ir para a seção Habilidades">Habilidades</a></li>
-                <li><a href="#projetos" aria-label="Ir para a seção Projetos">Projetos</a></li>
-                <li><a href="#contato" aria-label="Ir para a seção Contato">Contato</a></li>
-            </ul>
-        </nav>
-        <button class="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Alternar modo escuro">🌙</button>
-        <div class="header-content">
-            <img src="images/anderson.png" alt="Minha imagem" class="profile-img" style="width:110px;height:110px;">
-            <div class="header-text">
-                <h1 style="font-size:2.1em;">Anderson Jr</h1>
-                <p style="font-size:1.18em;">Desenvolvedor Web Full Stack</p>
-            </div>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">Anderson Jr.</div>
+                <ul class="nav-links">
+                    <li><a href="#hero">Início</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#skills">Habilidades</a></li>
+                    <li><a href="#projects">Projetos</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
         </div>
     </header>
-    <button class="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Alternar modo escuro">🌙</button>
-    <main>
-        <section id="sobre">
-            <h2>Sobre Mim</h2>
-            <p>Olá! Sou Anderson Jr., um desenvolvedor web full stack apaixonado por criar soluções inovadoras e impactantes. Desde 2023, venho transformando ideias em realidade digital, com foco em performance, usabilidade e design moderno. Acredito que a tecnologia pode mudar o mundo, e estou sempre em busca de novos desafios para crescer e contribuir com projetos incríveis.</p>
-        </section>
-        <section id="habilidades">
-            <h2>Habilidades</h2>
-            <ul class="habilidades-lista">
-                <li>Desenvolvimento Front-end e Back-end</li>
-                <li>Criação de aplicações web responsivas</li>
-                <li>Bancos de dados MongoDB</li>
-                <li>Manutenção e atualização de sistemas</li>
-            </ul>
-            <div class="skills">
-                <div class="skill">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML Icon">
-                    <span>HTML - Desenvolvimento de estruturas web semânticas e acessíveis</span>
-                </div>
-                <div class="skill">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS Icon">
-                    <span>CSS - Criação de layouts responsivos e animações</span>
-                </div>
-                <div class="skill">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript Icon">
-                    <span>JavaScript - Desenvolvimento de interatividade e funcionalidades dinâmicas</span>
-                </div>
-                <div class="skill">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python Icon">
-                    <span>Python - Automação e desenvolvimento backend</span>
-                </div>
-                <div class="skill">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js Icon">
-                    <span>Node.js - Criação de APIs e aplicações servidor</span>
-                </div>
-            </div>
-        </section>
 
-        <section id="minhas-tecnologias">
-            <h2>Minhas Tecnologias</h2>
-            <div class="tech-icons">
-                <a href="#" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"></a>
-                <a href="#" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"></a>
-                <a href="#" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></a>
-                <a href="#" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"></a>
-                <a href="#" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js"></a>
-                <a href="#" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"></a>
-                <a href="#" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"></a>
-                <a href="#" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB"></a>
-            </div>
-        </section>
-
-        <section id="servicos">
-            <h2>O que eu posso fazer por você</h2>
-            <ul>
-                <li>✅ Criar sites responsivos</li>
-                <li>✅ Desenvolver sistemas com login/cadastro</li>
-                <li>✅ Corrigir e otimizar sites existentes</li>
-                <li>✅ Criar painéis administrativos</li>
-                <li>✅ Criar telas de Dashboard</li>
-            </ul>
-        </section>
-        <section id="descricao-projetos">
-            <h2>Meus Projetos</h2>
-            <p>Confira alguns dos projetos que desenvolvi, com foco em tecnologias modernas e soluções inovadoras.</p>
-        </section>
-        <section id="projetos">
-            <div class="projects">
-                <div class="project destaque">
-                    <img src="images/project1.png" alt="MaxOnu 2024">
-                    <div class="project-info">
-                        <h3>MaxOnu 2024</h3>
-                        <p>Simulação da ONU para estudantes, desenvolvida com HTML, CSS e JavaScript. Projeto focado em educação e colaboração.</p>
-                        <div class="project-buttons">
-                            <a href="https://github.com/andersonjr667/MaxOnu-" target="_blank" class="btn-ver-projeto">Ver no GitHub</a>
-                            <a href="https://andersonjr667.github.io/MaxOnu-/" target="_blank" class="btn-ver-projeto">Abrir Site</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project">
-                    <img src="images/project5.png" alt="MaxOnu 2025">
-                    <div class="project-info">
-                        <h3>MaxOnu 2025</h3>
-                        <p>Atualização do projeto MaxOnu com novas funcionalidades e melhorias de performance.</p>
-                        <div class="project-buttons">
-                            <a href="https://github.com/andersonjr667/MaxOnu" target="_blank" class="btn-ver-projeto">Ver no GitHub</a>
-                            <a href="https://maxonu.onrender.com/" target="_blank" class="btn-ver-projeto">Abrir Site</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project">
-                    <img src="images/project2.png" alt="Thiago Vieira - Arquiteto e Empresário">
-                    <div class="project-info">
-                        <h3>Thiago Vieira - Arquiteto e Empresário</h3>
-                        <p>Site para arquiteto e empresário, destacando seus projetos e serviços.</p>
-                        <div class="project-buttons">
-                            <a href="https://github.com/andersonjr667/Thiago-Vieira" target="_blank" class="btn-ver-projeto">Ver no GitHub</a>
-                            <a href="https://andersonjr667.github.io/Thiago-Vieira/index.html" target="_blank" class="btn-ver-projeto">Abrir Site</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project">
-                    <img src="images/project3.png" alt="MaxFit">
-                    <div class="project-info">
-                        <h3>MaxFit</h3>
-                        <p>Site de uma academia fitness onde as pessoas possam assinar planos e entrar em contato com a academia.</p>
-                        <div class="project-buttons">
-                            <a href="https://github.com/andersonjr667/MaxFit" target="_blank" class="btn-ver-projeto">Ver no GitHub</a>
-                            <a href="https://andersonjr667.github.io/MaxFit/" target="_blank" class="btn-ver-projeto">Abrir Site</a>
-                        </div>
-                    </div>
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Olá, sou <span>Anderson Jr.</span></h1>
+                <p>Desenvolvedor Web Full Stack com foco em performance, usabilidade e design moderno. Transformando ideias em soluções digitais desde 2023.</p>
+                <div class="hero-btns">
+                    <a href="#projects" class="btn">Ver Projetos</a>
+                    <a href="#contact" class="btn btn-outline">Entrar em Contato</a>
                 </div>
             </div>
-        </section>
-        <section id="minhas-conquistas">
-            <h2>Minhas Conquistas</h2>
-            <ul>
-                <li>✨ Participação no projeto escolar MaxOnu 2024 e atualmente também no MaxOnu 2025</li>
-                <li>🎓 Certificação Full Stack Developer</li>
-                <li>📚 Participação em eventos de tecnologia como desenvolvedor de site</li>
-            </ul>
-        </section>
-        <section id="depoimentos">
-            <h2>Depoimentos</h2>
-            <div class="testimonials">
-                <div class="testimonial">
-                    <p>"Anderson é um profissional incrível! Ele entregou o projeto antes do prazo e com uma qualidade excepcional."</p>
-                    <h4>- Josefa</h4>
-                </div>
-                <div class="testimonial">
-                    <p>"Trabalhar com Anderson foi uma experiência fantástica. Ele é muito atencioso e domina as tecnologias mais modernas."</p>
-                    <h4>- Fabiana</h4>
-                </div>
-            </div>
-        </section>
-        <section id="contato">
-            <h2>Contato</h2>
-            <p>Entre em contato pelo WhatsApp:</p>
-            <a href="https://wa.me/5531971533882" target="_blank" class="whatsapp-btn">
-                <i class="fab fa-whatsapp"></i> Fale comigo no WhatsApp
-            </a>
-            <p>Email: <a href="mailto:alsj1520@gmail.com" class="email-protected">a***@gmail.com</a></p>
-            <p>GitHub: <a href="https://github.com/andersonjr667" target="_blank"><i class="fab fa-github"></i> https://github.com/andersonjr667</a></p>
-        </section>
-    </main>
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 Anderson Jr - Todos os direitos reservados</p>
-            <ul class="social-links">
-                <li><a href="https://linkedin.com/in/seuperfil" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-                <li><a href="https://github.com/andersonjr667" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
-                <li><a href="mailto:alsj1520@gmail.com"><i class="fas fa-envelope"></i> Email</a></li>
-            </ul>
         </div>
-        <button id="backToTop" onclick="scrollToTop()"></button>
-    </footer>
-    <button id="whatsapp-fixed" onclick="window.open('https://wa.me/5531971533882', '_blank')" aria-label="Contato via WhatsApp" style="bottom: 100px;">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
-    </button>
-    <div id="imageModal" class="modal">
-        <span class="close" onclick="closeImage()">&times;</span>
-        <img class="modal-content" id="modalImage">
-    </div>
-    <script src="script.js"></script>
-    <script>
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+    </section>
 
-        document.querySelectorAll('.nav-links a').forEach(anchor => {
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Sobre Mim</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Desenvolvedor Full Stack</h3>
+                    <p>Sou Anderson Jr., desenvolvedor web full stack desde 2023, especializado em criar soluções digitais que combinam desempenho excepcional, usabilidade intuitiva e design moderno.</p>
+                    <p>Meu propósito é desenvolver aplicações web que não apenas atendam às necessidades dos usuários, mas que também ofereçam uma experiência fluida e agradável. Acredito que a tecnologia deve ser acessível, eficiente e visualmente atraente.</p>
+                    <p>Minha abordagem combina conhecimentos técnicos profundos em front-end e back-end com uma atenção especial à performance e à experiência do usuário. Trabalho para garantir que cada projeto atenda aos mais altos padrões de qualidade.</p>
+                </div>
+                <div class="about-img">
+                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+                        <i class="fas fa-code" style="font-size: 4rem; color: var(--verde-musgo); margin-bottom: 20px;"></i>
+                        <h3 style="color: var(--verde-musgo); margin-bottom: 10px;">Desenvolvimento Web</h3>
+                        <p style="color: var(--verde-musgo); font-weight: 500;">Front-end & Back-end</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>Habilidades e Tecnologias</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3><i class="fas fa-laptop-code"></i> Front-end</h3>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-check-circle"></i> HTML Semântico</li>
+                        <li><i class="fas fa-check-circle"></i> CSS Responsivo (Flexbox, Grid)</li>
+                        <li><i class="fas fa-check-circle"></i> JavaScript Interativo</li>
+                        <li><i class="fas fa-check-circle"></i> Design de UI/UX Moderno</li>
+                        <li><i class="fas fa-check-circle"></i> Frameworks CSS (Bootstrap, Tailwind)</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-server"></i> Back-end</h3>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-check-circle"></i> Node.js</li>
+                        <li><i class="fas fa-check-circle"></i> Python (Django, Flask)</li>
+                        <li><i class="fas fa-check-circle"></i> Criação de APIs RESTful</li>
+                        <li><i class="fas fa-check-circle"></i> MongoDB (NoSQL Database)</li>
+                        <li><i class="fas fa-check-circle"></i> Autenticação e Autorização</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Ferramentas</h3>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-check-circle"></i> Git e GitHub</li>
+                        <li><i class="fas fa-check-circle"></i> Metodologias Ágeis</li>
+                        <li><i class="fas fa-check-circle"></i> Deploy e Hospedagem</li>
+                        <li><i class="fas fa-check-circle"></i> Testes e Debugging</li>
+                        <li><i class="fas fa-check-circle"></i> Ferramentas de Build (Webpack)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>Projetos Notáveis</h2>
+            <div class="projects-container">
+                <div class="project-card">
+                    <div class="project-img" style="background: linear-gradient(135deg, var(--verde-oliva) 0%, var(--verde-musgo) 100%);">
+                        MaxOnu 2025 - Simulação Educacional
+                    </div>
+                    <div class="project-content">
+                        <h3>MaxOnu 2025</h3>
+                        <p>Versão aprimorada da simulação da ONU com melhorias de performance, usabilidade e recursos adicionais para estudantes.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">Performance</span>
+                            <span class="tech-tag">Otimização</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/andersonjr667" class="btn" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://maxonu.onrender.com" class="btn btn-outline" target="_blank"><i class="fas fa-external-link-alt"></i> Site</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img" style="background: linear-gradient(135deg, #99CD85 0%, #7FA653 100%);">
+                        Thiago Vieira – Arquiteto e Empresário
+                    </div>
+                    <div class="project-content">
+                        <h3>Thiago Vieira</h3>
+                        <p>Site institucional para arquiteto e empresário, apresentando portfólio de projetos, abordagem profissional e informações de contato.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Design Responsivo</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/andersonjr667" class="btn" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://andersonjr667.github.io/Thiago-Vieira/index.html" class="btn btn-outline" target="_blank"><i class="fas fa-external-link-alt"></i> Site</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img" style="background: linear-gradient(135deg, #CFE0BC 0%, #99CD85 100%);">
+                        MaxFit - Soluções para Academias
+                    </div>
+                    <div class="project-content">
+                        <h3>MaxFit</h3>
+                        <p>Site completo para academia com sistema de assinatura, agendamento de aulas, contato direto e informações sobre serviços.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Sistema de Pagamento</span>
+                            <span class="tech-tag">API</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/andersonjr667" class="btn" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://andersonjr667.github.io/MaxFit/" class="btn btn-outline" target="_blank"><i class="fas fa-external-link-alt"></i> Site</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img" style="background: linear-gradient(135deg, #7FA653 0%, #63783D 100%);">
+                        Baboons Gourmet - Restaurante Premium
+                    </div>
+                    <div class="project-content">
+                        <h3>Baboons Gourmet</h3>
+                        <p>Site para restaurante gourmet com cardápio digital, sistema de reservas, galeria de pratos e informações sobre a casa.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Node.js</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/andersonjr667" class="btn" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://baboons.onrender.com" class="btn btn-outline" target="_blank"><i class="fas fa-external-link-alt"></i> Site</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="achievements">
+        <div class="container">
+            <h2>Conquistas</h2>
+            <div class="achievements-container">
+                <div class="achievement-card">
+                    <i class="fas fa-award"></i>
+                    <h3>Certificação Full Stack Developer</h3>
+                    <p>Certificado como desenvolvedor Full Stack após completar programa intensivo de formação com projetos práticos e avaliações técnicas.</p>
+                </div>
+                
+                <div class="achievement-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Projetos MaxOnu 2024 e 2025</h3>
+                    <p>Liderança técnica e desenvolvimento principal das simulações da ONU utilizadas por centenas de estudantes em eventos educacionais.</p>
+                </div>
+                
+                <div class="achievement-card">
+                    <i class="fas fa-microphone"></i>
+                    <h3>Palestras em Eventos de Tecnologia</h3>
+                    <p>Apresentação de trabalhos e palestras sobre desenvolvimento web, performance e usabilidade em eventos regionais de tecnologia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2>Depoimentos</h2>
+            <div class="testimonials-container">
+                <div class="testimonial-card">
+                    <p>Entregou o projeto antes do prazo e com qualidade excepcional. O cuidado com os detalhes e a atenção às nossas necessidades específicas foram impressionantes.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JF</div>
+                        <div class="author-info">
+                            <h4>José Fa</h4>
+                            <p>Cliente - MaxFit Academia</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p>Muito atencioso e domina tecnologias modernas. Transformou nossa ideia em um produto funcional que superou todas as expectativas. Recomendo fortemente!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">FV</div>
+                        <div class="author-info">
+                            <h4>Fabiana Vieira</h4>
+                            <p>Cliente - Site Institucional</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contato</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Vamos trabalhar juntos!</h3>
+                    <p>Estou disponível para novos projetos e oportunidades. Entre em contato através dos canais abaixo.</p>
+                    
+                    <ul class="contact-methods">
+                        <li>
+                            <i class="fab fa-whatsapp"></i>
+                            <a href="https://wa.me/5531971533882" target="_blank">(31) 97153-3882</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:alsj1520@gmail.com">alsj1520@gmail.com</a>
+                        </li>
+                        <li>
+                            <i class="fab fa-github"></i>
+                            <a href="https://github.com/andersonjr667" target="_blank">github.com/andersonjr667</a>
+                        </li>
+                    </ul>
+                    
+                    <div class="social-links">
+                        <a href="https://wa.me/5531971533882" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="mailto:alsj1520@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="https://github.com/andersonjr667" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <div style="background: white; border-radius: 10px; padding: 30px; box-shadow: var(--shadow);">
+                        <h3 style="margin-bottom: 20px; color: var(--verde-musgo);">Envie uma mensagem</h3>
+                        <form id="contactForm">
+                            <div style="margin-bottom: 20px;">
+                                <input type="text" placeholder="Nome" style="width: 100%; padding: 12px; border: 1px solid var(--light-gray); border-radius: 4px;">
+                            </div>
+                            <div style="margin-bottom: 20px;">
+                                <input type="email" placeholder="Email" style="width: 100%; padding: 12px; border: 1px solid var(--light-gray); border-radius: 4px;">
+                            </div>
+                            <div style="margin-bottom: 20px;">
+                                <textarea placeholder="Mensagem" style="width: 100%; padding: 12px; border: 1px solid var(--light-gray); border-radius: 4px; height: 120px;"></textarea>
+                            </div>
+                            <button type="submit" class="btn" style="width: 100%;">Enviar Mensagem</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Anderson Jr. - Desenvolvedor Full Stack. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Menu toggle for mobile
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
+                
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
             });
         });
-
-        window.onscroll = function () {
-            const backToTop = document.getElementById('backToTop');
-            const whatsappFixed = document.getElementById('whatsapp-fixed');
-            if (document.documentElement.scrollTop > 200) {
-                backToTop.style.display = 'block';
-                whatsappFixed.style.bottom = '80px';
-            } else {
-                backToTop.style.display = 'none';
-                whatsappFixed.style.bottom = '20px';
-            }
-        };
+        
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Mensagem enviada com sucesso! Entrarei em contato em breve.');
+            this.reset();
+        });
     </script>
 </body>
 </html>
