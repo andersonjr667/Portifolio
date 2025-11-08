@@ -1,0 +1,47 @@
+[
+  {
+    "id": "maxonu2025",
+    "title": "MaxOnu 2025",
+    "description": "Plataforma educacional que simula reuniões da ONU, utilizada por estudantes para aprender sobre diplomacia e relações internacionais de forma interativa.",
+    "image": "maxonu2025.png",
+    "url": "https://maxonu.onrender.com",
+    "repo": "https://github.com/andersonjr667",
+    "tags": ["JavaScript","Design Responsivo","Performance","Interatividade"]
+  },
+  {
+    "id": "agua-inteligente",
+    "title": "Água Inteligente",
+    "description": "Sistema inovador para monitoramento e gestão inteligente de recursos hídricos, promovendo consumo consciente e sustentabilidade.",
+    "image": "agua-inteligente.png",
+    "url": "https://agua-inteligente.onrender.com",
+    "repo": "https://github.com/andersonjr667",
+    "tags": ["IoT","Sensores","Dashboard","Sustentabilidade"]
+  },
+  {
+    "id": "maxfit",
+    "title": "MaxFit",
+    "description": "Sistema completo para academia com agendamento de aulas, controle de assinaturas e informações sobre serviços, facilitando a gestão do negócio.",
+    "image": "maxfit.png",
+    "url": "https://andersonjr667.github.io/MaxFit/",
+    "repo": "https://github.com/andersonjr667",
+    "tags": ["Sistema Completo","Banco de Dados","Pagamentos","Agendamento"]
+  },
+  {
+    "id": "baboons",
+    "title": "Baboons Gourmet",
+    "description": "Site elegante para restaurante com cardápio digital, sistema de reservas online e galeria de pratos, melhorando a experiência dos clientes.",
+    "image": "baboons.png",
+    "url": "https://baboons.onrender.com",
+    "repo": "https://github.com/andersonjr667",
+    "tags": ["Design Elegante","Cardápio Digital","Sistema de Reservas","Galeria"]
+  },
+  {
+    "id": "devocionais",
+    "title": "Devocionais",
+    "description": "Plataforma para compartilhar mensagens inspiradoras e devocionais da Juventude da Igreja Batista Solidária, facilitando o acesso ao conteúdo espiritual.",
+    "image": "devocionais.png",
+    "url": "https://andersonjr667.github.io/Devocionais/",
+    "repo": "https://github.com/andersonjr667",
+    "tags": ["Conteúdo Inspirador","Design Acolhedor","Fácil Navegação"]
+  }
+]
