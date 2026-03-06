@@ -1,47 +1,26 @@
 [
-  {
-    "id": "maxonu2025",
-    "title": "MaxOnu 2025",
-    "description": "Plataforma educacional que simula reuniões da ONU, utilizada por estudantes para aprender sobre diplomacia e relações internacionais de forma interativa.",
-    "image": "maxonu2025.png",
-    "url": "https://maxonu.onrender.com",
-    "repo": "https://github.com/andersonjr667",
-    "tags": ["JavaScript","Design Responsivo","Performance","Interatividade"]
-  },
-  {
-    "id": "agua-inteligente",
-    "title": "Água Inteligente",
-    "description": "Sistema inovador para monitoramento e gestão inteligente de recursos hídricos, promovendo consumo consciente e sustentabilidade.",
-    "image": "agua-inteligente.png",
-    "url": "https://agua-inteligente.onrender.com",
-    "repo": "https://github.com/andersonjr667",
-    "tags": ["IoT","Sensores","Dashboard","Sustentabilidade"]
-  },
-  {
-    "id": "maxfit",
-    "title": "MaxFit",
-    "description": "Sistema completo para academia com agendamento de aulas, controle de assinaturas e informações sobre serviços, facilitando a gestão do negócio.",
-    "image": "maxfit.png",
-    "url": "https://andersonjr667.github.io/MaxFit/",
-    "repo": "https://github.com/andersonjr667",
-    "tags": ["Sistema Completo","Banco de Dados","Pagamentos","Agendamento"]
-  },
-  {
-    "id": "baboons",
-    "title": "Baboons Gourmet",
-    "description": "Site elegante para restaurante com cardápio digital, sistema de reservas online e galeria de pratos, melhorando a experiência dos clientes.",
-    "image": "baboons.png",
-    "url": "https://baboons.onrender.com",
-    "repo": "https://github.com/andersonjr667",
-    "tags": ["Design Elegante","Cardápio Digital","Sistema de Reservas","Galeria"]
-  },
-  {
-    "id": "devocionais",
-    "title": "Devocionais",
-    "description": "Plataforma para compartilhar mensagens inspiradoras e devocionais da Juventude da Igreja Batista Solidária, facilitando o acesso ao conteúdo espiritual.",
-    "image": "devocionais.png",
-    "url": "https://andersonjr667.github.io/Devocionais/",
-    "repo": "https://github.com/andersonjr667",
-    "tags": ["Conteúdo Inspirador","Design Acolhedor","Fácil Navegação"]
-  }
+	{
+		"id": "baboons",
+		"title": "Baboons",
+ 		"description": "Site institucional desenvolvido para um restaurante gourmet, com foco em apresentar a proposta gastronômica da marca de forma sofisticada e atrativa. A plataforma destaca o conceito do restaurante, seu cardápio e a experiência oferecida aos clientes, utilizando um design moderno e navegação intuitiva para transmitir a identidade premium do estabelecimento.",
+ 		"image": "baboons.png",
+		"url": "https://baboons.onrender.com/",
+		"tags": ["HTML","CSS","JavaScript","Responsividade","Design","UI/UX"]
+	},
+	{
+		"id": "aprendiz-plus",
+		"title": "Aprendiz+",
+ 		"description": "Projeto digital criado com o objetivo de apoiar jovens entre 14 e 24 anos na entrada no mercado de trabalho. A plataforma foi desenvolvida para conectar oportunidades, informações e recursos que auxiliam no desenvolvimento profissional, incentivando a preparação, capacitação e crescimento dos jovens em sua jornada profissional.",
+ 		"image": "aprendiz+.png",
+		"url": "https://aprendiz-plus.onrender.com",
+		"tags": ["HTML","CSS","JavaScript","Responsividade","Design","UI/UX", "MongoDB", "NodeJS", "Backend"]
+	},
+	{
+		"id": "las-lobas",
+		"title": "Las Lobas",
+ 		"description": "Site desenvolvido para um projeto voltado ao fortalecimento e reconexão da essência feminina. A plataforma apresenta conteúdos e informações que incentivam mulheres a redescobrirem sua sensibilidade, presença e autenticidade, promovendo um espaço acolhedor de reflexão, crescimento pessoal e conexão com aquilo que há de mais genuíno em si mesmas.",
+ 		"image": "soulloba.png",
+		"url": "https://laslobas.onrender.com/",
+		"tags": ["HTML","CSS","JavaScript","Responsividade"]
+	}
 ]

@@ -108,30 +108,197 @@ async function loadProjects() {
     try {
         const response = await fetch('data/projects.json');
         const projects = await response.json();
-        
-        projects.forEach((project, index) => {
-            const card = createProjectCard(project, index);
-            projectsGrid.appendChild(card);
-        });
+        const cards = projects.map((project, index) => createProjectCard(project, index));
+
+        // Desktop/tablet: render improved infinite carousel; small phones: render grid
+        const CAROUSEL_MIN_WIDTH = 600;
+        if (window.innerWidth >= CAROUSEL_MIN_WIDTH && cards.length > 0) {
+            projectsGrid.innerHTML = '';
+
+            const carousel = document.createElement('div');
+            carousel.className = 'projects-carousel';
+            carousel.setAttribute('tabindex', '0');
+
+            const prev = document.createElement('button');
+            prev.className = 'carousel-prev';
+            prev.setAttribute('aria-label', 'Anterior');
+            prev.innerHTML = '&#10094;';
+
+            const next = document.createElement('button');
+            next.className = 'carousel-next';
+            next.setAttribute('aria-label', 'Próximo');
+            next.innerHTML = '&#10095;';
+
+            const viewport = document.createElement('div');
+            viewport.className = 'carousel-viewport';
+
+            const track = document.createElement('div');
+            track.className = 'carousel-track';
+
+            // clones for infinite looping
+            const firstClone = cards[0].cloneNode(true);
+            const lastClone = cards[cards.length - 1].cloneNode(true);
+            firstClone.dataset.clone = 'first';
+            lastClone.dataset.clone = 'last';
+
+            track.appendChild(lastClone);
+            cards.forEach(card => track.appendChild(card));
+            track.appendChild(firstClone);
+
+            viewport.appendChild(track);
+
+            const dots = document.createElement('div');
+            dots.className = 'carousel-dots';
+
+            carousel.appendChild(prev);
+            carousel.appendChild(viewport);
+            carousel.appendChild(next);
+            carousel.appendChild(dots);
+
+            projectsGrid.appendChild(carousel);
+
+            initEnhancedCarousel(carousel, cards.length);
+        } else {
+            cards.forEach(card => projectsGrid.appendChild(card));
+        }
     } catch (error) {
         console.error('Erro ao carregar projetos:', error);
         projectsGrid.innerHTML = '<p style="text-align: center; color: var(--gray-600);">Erro ao carregar projetos.</p>';
     }
 }
 
+// ===== CAROUSEL =====
+function initEnhancedCarousel(carousel, originalCount) {
+    const viewport = carousel.querySelector('.carousel-viewport');
+    const track = carousel.querySelector('.carousel-track');
+    const prev = carousel.querySelector('.carousel-prev');
+    const next = carousel.querySelector('.carousel-next');
+    const dotsContainer = carousel.querySelector('.carousel-dots');
+
+    const items = Array.from(track.children);
+    let index = 1; // start at first real item (after lastClone)
+    let isTransitioning = false;
+    let autoplay = null;
+
+    // build dots
+    const dots = [];
+    for (let i = 0; i < originalCount; i++) {
+        const d = document.createElement('button');
+        d.className = 'carousel-dot';
+        d.setAttribute('aria-label', `Ir para projeto ${i + 1}`);
+        d.dataset.slide = i + 1; // corresponds to index in items
+        dotsContainer.appendChild(d);
+        dots.push(d);
+        d.addEventListener('click', () => {
+            index = i + 1;
+            moveToIndex();
+            resetAutoplay();
+        });
+    }
+
+    function updateDots() {
+        const active = index - 1;
+        dots.forEach((d, i) => d.classList.toggle('active', i === active));
+    }
+
+    function moveToIndex(noTransition = false) {
+        if (noTransition) track.style.transition = 'none';
+        else track.style.transition = 'transform 0.5s cubic-bezier(0.2,0.8,0.2,1)';
+
+        const target = items[index];
+        if (!target) return;
+
+        const viewportRect = viewport.getBoundingClientRect();
+        const targetRect = target.getBoundingClientRect();
+        const offset = (target.offsetLeft + targetRect.width / 2) - (viewportRect.width / 2);
+        track.style.transform = `translateX(-${offset}px)`;
+
+        items.forEach((it, i) => it.classList.toggle('is-center', i === index));
+        updateDots();
+
+        if (noTransition) {
+            // force reflow then restore
+            requestAnimationFrame(() => { track.style.transition = ''; });
+        }
+    }
+
+    prev.addEventListener('click', () => {
+        if (isTransitioning) return;
+        index = index - 1;
+        moveToIndex();
+        resetAutoplay();
+    });
+
+    next.addEventListener('click', () => {
+        if (isTransitioning) return;
+        index = index + 1;
+        moveToIndex();
+        resetAutoplay();
+    });
+
+    track.addEventListener('transitionstart', () => { isTransitioning = true; });
+    track.addEventListener('transitionend', () => {
+        isTransitioning = false;
+        // handle clones
+        if (items[index].dataset.clone === 'first') {
+            index = 1;
+            moveToIndex(true);
+        } else if (items[index].dataset.clone === 'last') {
+            index = items.length - 2;
+            moveToIndex(true);
+        }
+    });
+
+    // keyboard
+    carousel.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') prev.click();
+        if (e.key === 'ArrowRight') next.click();
+    });
+
+    function startAutoplay() {
+        if (autoplay) return;
+        autoplay = setInterval(() => {
+            index = (index + 1);
+            moveToIndex();
+        }, 3500);
+    }
+
+    function stopAutoplay() {
+        if (!autoplay) return;
+        clearInterval(autoplay);
+        autoplay = null;
+    }
+
+    function resetAutoplay() {
+        stopAutoplay();
+        startAutoplay();
+    }
+
+    carousel.addEventListener('mouseenter', stopAutoplay);
+    carousel.addEventListener('mouseleave', startAutoplay);
+    carousel.addEventListener('focusin', stopAutoplay);
+    carousel.addEventListener('focusout', startAutoplay);
+
+            window.addEventListener('resize', () => {
+        if (window.innerWidth < CAROUSEL_MIN_WIDTH) location.reload();
+        requestAnimationFrame(moveToIndex);
+    });
+
+    // initial layout after images load
+    setTimeout(() => {
+        moveToIndex(true);
+        startAutoplay();
+    }, 80);
+}
+
 function createProjectCard(project, index) {
     const card = document.createElement('div');
     card.className = 'project-card';
     card.setAttribute('data-index', index);
-    
-    const imagePath = `images/optimized/${project.id}`;
-    
+    const imagePath = `images/${project.image}`;
     card.innerHTML = `
         <div class="project-image">
-            <picture>
-                <source srcset="${imagePath}.webp" type="image/webp">
-                <img src="${imagePath}-thumb.jpg" alt="${project.title}" loading="lazy">
-            </picture>
+            <img src="${imagePath}" alt="${project.title}" loading="lazy">
         </div>
         <div class="project-info">
             <h3>${project.title}</h3>
@@ -142,16 +309,18 @@ function createProjectCard(project, index) {
         </div>
     `;
     
-    card.addEventListener('click', () => openModal(project));
+    card.addEventListener('click', () => {
+        openModal(project);
+    });
     
     return card;
 }
 
 // ===== MODAL =====
 function openModal(project) {
-    const imagePath = `images/optimized/${project.id}`;
-    
-    document.getElementById('modalImage').src = `${imagePath}.jpg`;
+    const imagePath = `images/${project.image}`;
+
+    document.getElementById('modalImage').src = imagePath;
     document.getElementById('modalImage').alt = project.title;
     document.getElementById('modalTitle').textContent = project.title;
     document.getElementById('modalDescription').textContent = project.description;
@@ -163,7 +332,20 @@ function openModal(project) {
     
     document.getElementById('modalRepo').href = project.repo;
     document.getElementById('modalLive').href = project.url;
-    
+    const modalRepoEl = document.getElementById('modalRepo');
+    if (project.repo) {
+        modalRepoEl.href = project.repo;
+        modalRepoEl.style.display = '';
+    } else {
+        modalRepoEl.style.display = 'none';
+    }
+    const modalLiveEl = document.getElementById('modalLive');
+    if (project.url) {
+        modalLiveEl.href = project.url;
+        modalLiveEl.style.display = '';
+    } else {
+        modalLiveEl.style.display = 'none';
+    }
     modal.classList.add('active');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';

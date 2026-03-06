@@ -398,6 +398,201 @@ section {
     margin-bottom: 1rem;
 }
 
+/* Projects grid and cards */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    align-items: stretch;
+}
+
+/* Ensure carousel spans full grid width when placed inside .projects-grid */
+.projects-carousel {
+    grid-column: 1 / -1;
+    width: 100%;
+    display: block;
+}
+
+/* Responsive sizing for carousel cards */
+.carousel-track .project-card {
+    min-width: 300px;
+}
+
+@media (min-width: 1200px) {
+    .carousel-track .project-card { min-width: 380px; }
+}
+
+@media (max-width: 899px) {
+    .carousel-track .project-card { min-width: 300px; }
+}
+
+@media (max-width: 599px) {
+    /* Switch to grid layout for small phones */
+    .projects-grid { display: grid; grid-template-columns: 1fr; }
+    .projects-carousel { grid-column: auto; }
+    .carousel-prev, .carousel-next { display: none; }
+    .carousel-dots { justify-content: flex-start; padding-left: 16px; }
+    .carousel-track { gap: 1rem; }
+    .carousel-track .project-card.is-center { transform: scale(1.02) translateY(-4px); }
+}
+
+.project-card {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+}
+
+.project-image {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    background: linear-gradient(180deg, var(--gray-100), var(--gray-300));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.project-info {
+    padding: 1rem 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex: 1 1 auto;
+}
+
+.project-info h3 {
+    margin: 0;
+    font-size: 1.125rem;
+    color: var(--dark);
+}
+
+.project-info p {
+    margin: 0;
+    color: var(--gray-700);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.project-tech {
+    margin-top: auto;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.tech-tag {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    background: var(--gray-100);
+    color: var(--gray-800);
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Modal image sizing */
+#modalImage {
+    width: 100%;
+    height: auto;
+    max-height: 60vh;
+    object-fit: cover;
+}
+
+/* Carousel (desktop) */
+.projects-carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.45s cubic-bezier(0.2,0.8,0.2,1);
+    will-change: transform;
+    padding: 1rem 0;
+}
+
+.carousel-track .project-card {
+    min-width: 320px;
+    max-width: 420px;
+    flex: 0 0 auto;
+}
+
+.carousel-prev,
+.carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.9);
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: var(--primary-dark);
+    cursor: pointer;
+    z-index: 20;
+}
+
+.carousel-prev { left: 10px; }
+.carousel-next { right: 10px; }
+
+@media (max-width: 899px) {
+    /* on small screens use grid */
+    .projects-grid { display: grid; }
+    .carousel-prev, .carousel-next { display: none; }
+}
+
+/* viewport wrapper to center items */
+.carousel-viewport {
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel-dots {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 12px;
+}
+
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--gray-300);
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.carousel-dot.active {
+    background: var(--primary);
+    transform: scale(1.2);
+}
+
 .section-title {
     font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 800;
@@ -426,11 +621,34 @@ section {
 .about-text {
     max-width: 800px;
     margin: 0 auto;
+.carousel-track .project-card {
+    min-width: 300px;
+    max-width: 420px;
+    flex: 0 0 auto;
+    transition: transform 0.35s cubic-bezier(0.2,0.8,0.2,1), box-shadow 0.35s ease;
+    transform-origin: center center;
 }
 
-.lead {
-    font-size: 1.3rem;
-    font-weight: 500;
+.carousel-track .project-card:not(.is-center) {
+    transform: scale(0.92);
+    opacity: 0.9;
+}
+
+.carousel-track .project-card.is-center {
+    transform: scale(1.08) translateY(-12px);
+    box-shadow: 0 24px 50px rgba(0,0,0,0.14);
+    z-index: 5;
+    opacity: 1;
+}
+
+/* increase center card image height and animate smoothly */
+.carousel-track .project-card.is-center .project-image {
+    height: 320px;
+}
+
+.project-image {
+    transition: height 0.36s cubic-bezier(0.2,0.8,0.2,1);
+}
     color: var(--gray-800);
     margin-bottom: 1.5rem;
     line-height: 1.6;
@@ -910,4 +1128,18 @@ section {
         width: 45px;
         height: 45px;
     }
+}
+
+/* Project description truncation and wide-grid spacing */
+.project-info p {
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Improve grid spacing on wide screens */
+@media (min-width: 1200px) {
+    .projects-grid { grid-template-columns: repeat(3, 1fr); gap: 2.25rem; }
 }
