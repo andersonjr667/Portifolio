@@ -11,7 +11,7 @@ const scrollToTopBtn = document.getElementById('scrollToTop');
 const projectsGrid = document.getElementById('projectsGrid');
 const modal = document.getElementById('projectModal');
 const modalClose = document.getElementById('modalClose');
-const modalOverlay = modal.querySelector('.modal-overlay');
+const modalOverlay = modal ? modal.querySelector('.modal-overlay') : null;
 
 // ===== SCROLL TO TOP =====
 window.addEventListener('scroll', () => {
@@ -62,20 +62,27 @@ navLinks.querySelectorAll('a').forEach(link => {
 });
 
 // ===== SMOOTH SCROLL =====
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+document.querySelectorAll('a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
+
+        const href = this.getAttribute('href');
+
+        // executa apenas se for âncora interna (#id)
+        if (!href || !href.startsWith('#')) return;
+
+        const target = document.querySelector(href);
+
+        if (!target) return;
+
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        
-        if (target) {
-            const headerHeight = header.offsetHeight;
-            const targetPosition = target.offsetTop - headerHeight;
-            
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-        }
+
+        const headerHeight = header.offsetHeight;
+        const targetPosition = target.offsetTop - headerHeight;
+
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
     });
 });
 
