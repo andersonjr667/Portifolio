@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anderson Jr. | Desenvolvedor Full Stack</title>
     <meta name="description" content="Portfólio profissional de Anderson Jr. - Desenvolvedor Full Stack especializado em criar soluções web modernas e eficientes.">
-    <link rel="icon" href="images/favicon.png" type="image/png">
+    <link rel="icon" href="images/logo.ico" type="image/x-icon">
+    <link rel="preload" as="image" href="images/anderson2.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
@@ -37,30 +38,44 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-tag">Desenvolvedor Full Stack</div>
-                <h1 class="hero-title">ANDERSON JR.</h1>
-                <p class="hero-subtitle">Transformo ideias em soluções digitais profissionais, funcionais e eficientes.</p>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-number">5+</span>
-                        <span class="stat-label">Projetos Completos</span>
+            <div class="hero-layout">
+                <div class="hero-content">
+                    <div class="hero-tag">Desenvolvedor Full Stack</div>
+                    <h1 class="hero-title">ANDERSON JR.</h1>
+                    <p class="hero-subtitle">Transformo ideias em soluções digitais profissionais, funcionais e eficientes.</p>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">Projetos Completos</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">Anos de Experiência</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Satisfação</span>
+                        </div>
                     </div>
-                    <div class="stat">
-                        <span class="stat-number">3</span>
-                        <span class="stat-label">Anos de Experiência</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">100%</span>
-                        <span class="stat-label">Satisfação</span>
+                    <div class="hero-cta">
+                        <a href="#projects" class="btn btn-primary">
+                            <span>Ver Projetos</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#instagram" class="btn btn-outline">Instagram</a>
+                        <a href="#contact" class="btn btn-outline">Fale Comigo</a>
                     </div>
                 </div>
-                <div class="hero-cta">
-                    <a href="#projects" class="btn btn-primary">
-                        <span>Ver Projetos</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <a href="#contact" class="btn btn-outline">Fale Comigo</a>
+                <div class="hero-visual">
+                    <div class="hero-photo-frame">
+                        <div class="hero-photo-ring">
+                            <img src="images/anderson2.png" alt="Foto de Anderson Jr." class="hero-photo" data-fallback-src="images/anderson.png" fetchpriority="high" decoding="async">
+                        </div>
+                    </div>
+                    <div class="hero-badge">
+                        <i class="fab fa-instagram"></i>
+                        <span>@andersonjr0667</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -139,8 +154,54 @@
                 <h2 class="section-title">Projetos Desenvolvidos</h2>
                 <p class="section-subtitle">Soluções completas que combinam design e funcionalidade</p>
             </div>
-            <div class="projects-grid" id="projectsGrid">
-                <!-- Projects will be loaded here -->
+            <div class="projects-shell">
+                <div class="projects-intro">
+                    <p class="projects-lead">Seleção dos trabalhos que melhor representam meu cuidado com interface, experiência e desenvolvimento completo.</p>
+                    <div class="projects-hint">
+                        <i class="fas fa-arrow-pointer"></i>
+                        <span>Clique em um card para ver mais detalhes</span>
+                    </div>
+                </div>
+                <div class="projects-grid" id="projectsGrid">
+                    <!-- Projects will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="instagram" class="instagram-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Instagram</span>
+                <h2 class="section-title">Conteúdo e Bastidores</h2>
+                <p class="section-subtitle">Um espaço dedicado ao seu perfil, com foto, identidade e acesso direto ao seu Instagram.</p>
+            </div>
+            <div class="instagram-showcase instagram-showcase-wide">
+                <div class="instagram-header">
+                    <div class="instagram-profile">
+                        <img src="images/anderson2.png" alt="Foto de perfil de Anderson Jr." class="instagram-avatar" data-fallback-src="images/anderson.png" loading="lazy" decoding="async">
+                        <div>
+                            <span class="instagram-label">Instagram Oficial</span>
+                            <h3>@andersonjr0667</h3>
+                            <p>Acompanhe meus projetos, bastidores e atualizações no Instagram.</p>
+                        </div>
+                    </div>
+                    <a href="https://www.instagram.com/andersonjr0667/" target="_blank" rel="noopener noreferrer" class="btn btn-outline instagram-btn">
+                        <i class="fab fa-instagram"></i>
+                        <span>Ver Perfil</span>
+                    </a>
+                </div>
+                <div class="instagram-posts instagram-posts-large">
+                    <div class="instagram-embed-card">
+                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DWOlUKpDHdt/" data-instgrm-version="14"></blockquote>
+                    </div>
+                    <div class="instagram-embed-card">
+                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DWWToasjVKI/" data-instgrm-version="14"></blockquote>
+                    </div>
+                    <div class="instagram-embed-card">
+                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DV8WAguAeOJ/" data-instgrm-version="14"></blockquote>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -217,6 +278,9 @@
                     </a>
                     <a href="https://github.com/andersonjr667" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                         <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.instagram.com/andersonjr0667/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
                     </a>
                 </div>
             </div>

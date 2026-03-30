@@ -1,9 +1,7 @@
-// ===================================
-// ANDERSON JR. - PORTFÓLIO PROFISSIONAL
-// Main JavaScript File
-// ===================================
+const CAROUSEL_MIN_WIDTH = 768;
+const PROJECTS_ENDPOINT = 'data/projects.json';
+const LOCAL_HOSTS = new Set(['localhost', '127.0.0.1']);
 
-// DOM Elements
 const header = document.getElementById('header');
 const menuToggle = document.getElementById('menuToggle');
 const navLinks = document.getElementById('navLinks');
@@ -12,23 +10,68 @@ const projectsGrid = document.getElementById('projectsGrid');
 const modal = document.getElementById('projectModal');
 const modalClose = document.getElementById('modalClose');
 const modalOverlay = modal ? modal.querySelector('.modal-overlay') : null;
+const contactForm = document.getElementById('contactForm');
+const sections = Array.from(document.querySelectorAll('section[id]'));
+const copyrightText = document.querySelector('.footer-bottom p');
+const instagramSection = document.getElementById('instagram');
 
-// ===== SCROLL TO TOP =====
-window.addEventListener('scroll', () => {
-    // Show/hide scroll to top button
-    if (window.scrollY > 300) {
-        scrollToTopBtn.classList.add('visible');
-    } else {
-        scrollToTopBtn.classList.remove('visible');
-    }
-    
-    // Add shadow to header on scroll
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-});
+const state = {
+    projects: [],
+    projectLayout: '',
+    carouselCleanup: null,
+    resizeTimer: null,
+    scrollTicking: false,
+    instagramScriptLoaded: false
+};
+
+function setMenuState(isOpen) {
+    navLinks.classList.toggle('active', isOpen);
+    const icon = menuToggle.querySelector('i');
+
+    icon.classList.toggle('fa-bars', !isOpen);
+    icon.classList.toggle('fa-times', isOpen);
+}
+
+function scrollToTarget(target) {
+    const headerHeight = header.offsetHeight;
+    const targetPosition = target.offsetTop - headerHeight;
+
+    window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+    });
+}
+
+function getProjectLayout() {
+    return window.innerWidth >= CAROUSEL_MIN_WIDTH ? 'carousel' : 'grid';
+}
+
+function createElement(tagName, className, attributes = {}) {
+    const element = document.createElement(tagName);
+    if (className) element.className = className;
+
+    Object.entries(attributes).forEach(([key, value]) => {
+        element.setAttribute(key, value);
+    });
+
+    return element;
+}
+
+function updateScrollUI() {
+    scrollToTopBtn.classList.toggle('visible', window.scrollY > 300);
+    header.classList.toggle('scrolled', window.scrollY > 50);
+    highlightNavLink();
+}
+
+function handleScroll() {
+    if (state.scrollTicking) return;
+
+    state.scrollTicking = true;
+    window.requestAnimationFrame(() => {
+        updateScrollUI();
+        state.scrollTicking = false;
+    });
+}
 
 scrollToTopBtn.addEventListener('click', () => {
     window.scrollTo({
@@ -39,25 +82,13 @@ scrollToTopBtn.addEventListener('click', () => {
 
 // ===== MOBILE MENU =====
 menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    const icon = menuToggle.querySelector('i');
-    
-    if (navLinks.classList.contains('active')) {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-times');
-    } else {
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-    }
+    setMenuState(!navLinks.classList.contains('active'));
 });
 
 // Close menu when clicking on a link
 navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        const icon = menuToggle.querySelector('i');
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
+        setMenuState(false);
     });
 });
 
@@ -76,19 +107,11 @@ document.querySelectorAll('a').forEach(anchor => {
 
         e.preventDefault();
 
-        const headerHeight = header.offsetHeight;
-        const targetPosition = target.offsetTop - headerHeight;
-
-        window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-        });
+        scrollToTarget(target);
     });
 });
 
 // ===== ACTIVE NAV LINK ON SCROLL =====
-const sections = document.querySelectorAll('section[id]');
-
 function highlightNavLink() {
     const scrollY = window.scrollY;
     
@@ -108,70 +131,66 @@ function highlightNavLink() {
     });
 }
 
-window.addEventListener('scroll', highlightNavLink);
-
 // ===== LOAD PROJECTS =====
 async function loadProjects() {
     try {
-        const response = await fetch('data/projects.json');
-        const projects = await response.json();
-        const cards = projects.map((project, index) => createProjectCard(project, index));
-
-        // Desktop/tablet: render improved infinite carousel; small phones: render grid
-        const CAROUSEL_MIN_WIDTH = 600;
-        if (window.innerWidth >= CAROUSEL_MIN_WIDTH && cards.length > 0) {
-            projectsGrid.innerHTML = '';
-
-            const carousel = document.createElement('div');
-            carousel.className = 'projects-carousel';
-            carousel.setAttribute('tabindex', '0');
-
-            const prev = document.createElement('button');
-            prev.className = 'carousel-prev';
-            prev.setAttribute('aria-label', 'Anterior');
-            prev.innerHTML = '&#10094;';
-
-            const next = document.createElement('button');
-            next.className = 'carousel-next';
-            next.setAttribute('aria-label', 'Próximo');
-            next.innerHTML = '&#10095;';
-
-            const viewport = document.createElement('div');
-            viewport.className = 'carousel-viewport';
-
-            const track = document.createElement('div');
-            track.className = 'carousel-track';
-
-            // clones for infinite looping
-            const firstClone = cards[0].cloneNode(true);
-            const lastClone = cards[cards.length - 1].cloneNode(true);
-            firstClone.dataset.clone = 'first';
-            lastClone.dataset.clone = 'last';
-
-            track.appendChild(lastClone);
-            cards.forEach(card => track.appendChild(card));
-            track.appendChild(firstClone);
-
-            viewport.appendChild(track);
-
-            const dots = document.createElement('div');
-            dots.className = 'carousel-dots';
-
-            carousel.appendChild(prev);
-            carousel.appendChild(viewport);
-            carousel.appendChild(next);
-            carousel.appendChild(dots);
-
-            projectsGrid.appendChild(carousel);
-
-            initEnhancedCarousel(carousel, cards.length);
-        } else {
-            cards.forEach(card => projectsGrid.appendChild(card));
-        }
+        const response = await fetch(PROJECTS_ENDPOINT);
+        state.projects = await response.json();
+        renderProjects();
     } catch (error) {
         console.error('Erro ao carregar projetos:', error);
         projectsGrid.innerHTML = '<p style="text-align: center; color: var(--gray-600);">Erro ao carregar projetos.</p>';
     }
+}
+
+function renderProjects() {
+    if (typeof state.carouselCleanup === 'function') {
+        state.carouselCleanup();
+        state.carouselCleanup = null;
+    }
+
+    projectsGrid.innerHTML = '';
+    state.projectLayout = getProjectLayout();
+
+    const cards = state.projects.map((project, index) => createProjectCard(project, index));
+
+    if (state.projectLayout === 'carousel' && cards.length > 0) {
+        const carousel = createCarousel(cards);
+        projectsGrid.appendChild(carousel);
+        state.carouselCleanup = initEnhancedCarousel(carousel, cards.length);
+    } else {
+        cards.forEach((card) => projectsGrid.appendChild(card));
+    }
+
+    observeAnimatedElements();
+}
+
+function createCarousel(cards) {
+    const carousel = createElement('div', 'projects-carousel', { tabindex: '0' });
+    const prev = createElement('button', 'carousel-prev', { 'aria-label': 'Anterior', type: 'button' });
+    const next = createElement('button', 'carousel-next', { 'aria-label': 'Próximo', type: 'button' });
+    const viewport = createElement('div', 'carousel-viewport');
+    const track = createElement('div', 'carousel-track');
+    const dots = createElement('div', 'carousel-dots');
+
+    prev.innerHTML = '&#10094;';
+    next.innerHTML = '&#10095;';
+
+    // Render three full sets so the carousel can keep moving forward
+    // and be silently recentered without a visible "jump back".
+    for (let setIndex = 0; setIndex < 3; setIndex += 1) {
+        cards.forEach((card, cardIndex) => {
+            const item = card.cloneNode(true);
+            item.dataset.sequence = String(cardIndex + 1);
+            item.dataset.set = String(setIndex);
+            track.appendChild(item);
+        });
+    }
+
+    viewport.appendChild(track);
+    carousel.append(prev, viewport, next, dots);
+
+    return carousel;
 }
 
 // ===== CAROUSEL =====
@@ -183,17 +202,27 @@ function initEnhancedCarousel(carousel, originalCount) {
     const dotsContainer = carousel.querySelector('.carousel-dots');
 
     const items = Array.from(track.children);
-    let index = 1; // start at first real item (after lastClone)
+    let index = originalCount; // start in the middle set
     let isTransitioning = false;
     let autoplay = null;
+
+    function getWrappedIndex(value) {
+        return ((value % originalCount) + originalCount) % originalCount;
+    }
+
+    function recenterIndex(currentIndex) {
+        const normalizedIndex = getWrappedIndex(currentIndex);
+        return originalCount + normalizedIndex;
+    }
 
     // build dots
     const dots = [];
     for (let i = 0; i < originalCount; i++) {
-        const d = document.createElement('button');
-        d.className = 'carousel-dot';
-        d.setAttribute('aria-label', `Ir para projeto ${i + 1}`);
-        d.dataset.slide = i + 1; // corresponds to index in items
+        const d = createElement('button', 'carousel-dot', {
+            'aria-label': `Ir para projeto ${i + 1}`,
+            'data-slide': String(i + 1),
+            type: 'button'
+        });
         dotsContainer.appendChild(d);
         dots.push(d);
         d.addEventListener('click', () => {
@@ -204,28 +233,41 @@ function initEnhancedCarousel(carousel, originalCount) {
     }
 
     function updateDots() {
-        const active = index - 1;
+        const active = getWrappedIndex(index);
         dots.forEach((d, i) => d.classList.toggle('active', i === active));
     }
 
     function moveToIndex(noTransition = false) {
-        if (noTransition) track.style.transition = 'none';
-        else track.style.transition = 'transform 0.5s cubic-bezier(0.2,0.8,0.2,1)';
+        track.classList.toggle('is-resetting', noTransition);
+        track.style.transition = noTransition ? 'none' : '';
 
         const target = items[index];
         if (!target) return;
 
-        const viewportRect = viewport.getBoundingClientRect();
-        const targetRect = target.getBoundingClientRect();
-        const offset = (target.offsetLeft + targetRect.width / 2) - (viewportRect.width / 2);
+        const offset = target.offsetLeft - ((viewport.clientWidth - target.clientWidth) / 2);
         track.style.transform = `translateX(-${offset}px)`;
 
-        items.forEach((it, i) => it.classList.toggle('is-center', i === index));
+        const currentSequence = getWrappedIndex(index);
+        const previousIndex = getWrappedIndex(index - 1);
+        const nextIndex = getWrappedIndex(index + 1);
+
+        items.forEach((item, itemIndex) => {
+            const wrappedItemIndex = getWrappedIndex(itemIndex);
+
+            item.classList.toggle('is-center', itemIndex === index);
+            item.classList.toggle('is-prev', wrappedItemIndex === previousIndex && itemIndex !== index);
+            item.classList.toggle('is-next', wrappedItemIndex === nextIndex && itemIndex !== index);
+            item.classList.toggle('is-side', wrappedItemIndex === previousIndex || wrappedItemIndex === nextIndex);
+            item.classList.toggle('is-current-sequence', wrappedItemIndex === currentSequence);
+        });
         updateDots();
 
         if (noTransition) {
             // force reflow then restore
-            requestAnimationFrame(() => { track.style.transition = ''; });
+            requestAnimationFrame(() => {
+                track.classList.remove('is-resetting');
+                track.style.transition = '';
+            });
         }
     }
 
@@ -243,15 +285,18 @@ function initEnhancedCarousel(carousel, originalCount) {
         resetAutoplay();
     });
 
-    track.addEventListener('transitionstart', () => { isTransitioning = true; });
+    track.addEventListener('transitionstart', () => {
+        isTransitioning = true;
+        carousel.classList.add('is-animating');
+    });
     track.addEventListener('transitionend', () => {
         isTransitioning = false;
-        // handle clones
-        if (items[index].dataset.clone === 'first') {
-            index = 1;
-            moveToIndex(true);
-        } else if (items[index].dataset.clone === 'last') {
-            index = items.length - 2;
+        carousel.classList.remove('is-animating');
+
+        // Recenters to the middle set invisibly so the forward sequence
+        // stays 1,2,3,1,2,3... without a visible rewind.
+        if (index < originalCount || index >= originalCount * 2) {
+            index = recenterIndex(index);
             moveToIndex(true);
         }
     });
@@ -286,28 +331,33 @@ function initEnhancedCarousel(carousel, originalCount) {
     carousel.addEventListener('focusin', stopAutoplay);
     carousel.addEventListener('focusout', startAutoplay);
 
-            window.addEventListener('resize', () => {
-        if (window.innerWidth < CAROUSEL_MIN_WIDTH) location.reload();
-        requestAnimationFrame(moveToIndex);
-    });
-
     // initial layout after images load
     setTimeout(() => {
         moveToIndex(true);
         startAutoplay();
     }, 80);
+
+    return () => {
+        stopAutoplay();
+    };
 }
 
 function createProjectCard(project, index) {
-    const card = document.createElement('div');
-    card.className = 'project-card';
-    card.setAttribute('data-index', index);
+    const card = createElement('article', 'project-card', {
+        'data-index': String(index),
+        tabindex: '0'
+    });
+    const projectNumber = String(index + 1).padStart(2, '0');
     const imagePath = `images/${project.image}`;
     card.innerHTML = `
         <div class="project-image">
             <img src="${imagePath}" alt="${project.title}" loading="lazy">
         </div>
         <div class="project-info">
+            <div class="project-meta">
+                <span class="project-index">Projeto ${projectNumber}</span>
+                <span class="project-action">Ver detalhes <i class="fas fa-arrow-right"></i></span>
+            </div>
             <h3>${project.title}</h3>
             <p>${project.description}</p>
             <div class="project-tech">
@@ -316,8 +366,13 @@ function createProjectCard(project, index) {
         </div>
     `;
     
-    card.addEventListener('click', () => {
-        openModal(project);
+    const openProject = () => openModal(project);
+    card.addEventListener('click', openProject);
+    card.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            openProject();
+        }
     });
     
     return card;
@@ -364,6 +419,76 @@ function closeModal() {
     document.body.style.overflow = '';
 }
 
+function setupImageFallbacks() {
+    document.querySelectorAll('img[data-fallback-src]').forEach((image) => {
+        image.addEventListener('error', () => {
+            const fallbackSrc = image.dataset.fallbackSrc;
+            if (!fallbackSrc) return;
+            image.src = fallbackSrc;
+        }, { once: true });
+    });
+}
+
+function ensureInstagramEmbeds() {
+    if (window.instgrm?.Embeds?.process) {
+        window.instgrm.Embeds.process();
+        return Promise.resolve();
+    }
+
+    if (state.instagramScriptLoaded) {
+        return Promise.resolve();
+    }
+
+    state.instagramScriptLoaded = true;
+
+    return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = 'https://www.instagram.com/embed.js';
+        script.async = true;
+        script.onload = () => {
+            window.instgrm?.Embeds?.process?.();
+            resolve();
+        };
+        script.onerror = reject;
+        document.body.appendChild(script);
+    });
+}
+
+function setupInstagramEmbeds() {
+    if (!instagramSection) return;
+
+    const embedObserver = new IntersectionObserver((entries, observerInstance) => {
+        const isVisible = entries.some((entry) => entry.isIntersecting);
+        if (!isVisible) return;
+
+        ensureInstagramEmbeds().catch((error) => {
+            console.error('Erro ao carregar embeds do Instagram:', error);
+        });
+        observerInstance.disconnect();
+    }, {
+        rootMargin: '200px 0px'
+    });
+
+    embedObserver.observe(instagramSection);
+}
+
+function updateFooterYear() {
+    if (!copyrightText) return;
+    copyrightText.textContent = `© ${new Date().getFullYear()} Anderson Jr. Todos os direitos reservados.`;
+}
+
+function handleResize() {
+    window.clearTimeout(state.resizeTimer);
+    state.resizeTimer = window.setTimeout(() => {
+        if (!state.projects.length) return;
+
+        const nextLayout = getProjectLayout();
+        if (nextLayout !== state.projectLayout || nextLayout === 'carousel') {
+            renderProjects();
+        }
+    }, 120);
+}
+
 modalClose.addEventListener('click', closeModal);
 modalOverlay.addEventListener('click', closeModal);
 
@@ -374,12 +499,10 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ===== FORM SUBMISSION =====
-const contactForm = document.getElementById('contactForm');
-
 contactForm.addEventListener('submit', function(e) {
     // Netlify handles the form submission automatically when deployed
     // For local testing, show a message
-    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    if (LOCAL_HOSTS.has(window.location.hostname)) {
         e.preventDefault();
         alert('✅ Mensagem enviada com sucesso!\n\nNota: Em produção (Netlify), as mensagens são enviadas automaticamente.');
         contactForm.reset();
@@ -401,28 +524,32 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe elements for fade-in animation
-document.querySelectorAll('.skill-card, .project-card, .contact-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-});
+function observeAnimatedElements() {
+    document.querySelectorAll('.skill-card, .project-card, .contact-card').forEach(el => {
+        if (el.dataset.observed === 'true') return;
+
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        el.dataset.observed = 'true';
+        observer.observe(el);
+    });
+}
 
 // ===== INITIALIZE =====
 document.addEventListener('DOMContentLoaded', () => {
+    setupImageFallbacks();
+    setupInstagramEmbeds();
+    observeAnimatedElements();
     loadProjects();
-    highlightNavLink();
+    updateScrollUI();
     
     // Add loading animation
     document.body.classList.add('loaded');
     
-    // Copyright year
-    const year = new Date().getFullYear();
-    const copyrightText = document.querySelector('.footer-bottom p');
-    if (copyrightText && !copyrightText.textContent.includes(year)) {
-        copyrightText.textContent = `© ${year} Anderson Jr. Todos os direitos reservados.`;
-    }
+    updateFooterYear();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleResize, { passive: true });
 });
 
 // ===== PERFORMANCE OPTIMIZATIONS =====
@@ -433,12 +560,7 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 }
 
 // Lazy load images
-if ('loading' in HTMLImageElement.prototype) {
-    const images = document.querySelectorAll('img[loading="lazy"]');
-    images.forEach(img => {
-        img.src = img.src;
-    });
-} else {
+if (!('loading' in HTMLImageElement.prototype)) {
     // Fallback for browsers that don't support lazy loading
     const script = document.createElement('script');
     script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
