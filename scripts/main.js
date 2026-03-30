@@ -14,6 +14,9 @@ const contactForm = document.getElementById('contactForm');
 const sections = Array.from(document.querySelectorAll('section[id]'));
 const copyrightText = document.querySelector('.footer-bottom p');
 const instagramSection = document.getElementById('instagram');
+const projectsCountEl = document.getElementById('projectsCount');
+const projectsTechCountEl = document.getElementById('projectsTechCount');
+const heroProjectsCountEl = document.getElementById('heroProjectsCount');
 
 const state = {
     projects: [],
@@ -57,10 +60,21 @@ function createElement(tagName, className, attributes = {}) {
     return element;
 }
 
+function getImagePath(fileName) {
+    return `images/${encodeURIComponent(fileName)}`;
+}
+
 function updateScrollUI() {
     scrollToTopBtn.classList.toggle('visible', window.scrollY > 300);
     header.classList.toggle('scrolled', window.scrollY > 50);
     highlightNavLink();
+}
+
+function updateProjectStats(projects) {
+    const uniqueTags = new Set(projects.flatMap((project) => project.tags));
+    if (projectsCountEl) projectsCountEl.textContent = String(projects.length);
+    if (projectsTechCountEl) projectsTechCountEl.textContent = String(uniqueTags.size);
+    if (heroProjectsCountEl) heroProjectsCountEl.textContent = `${projects.length}+`;
 }
 
 function handleScroll() {
@@ -136,10 +150,11 @@ async function loadProjects() {
     try {
         const response = await fetch(PROJECTS_ENDPOINT);
         state.projects = await response.json();
+        updateProjectStats(state.projects);
         renderProjects();
     } catch (error) {
         console.error('Erro ao carregar projetos:', error);
-        projectsGrid.innerHTML = '<p style="text-align: center; color: var(--gray-600);">Erro ao carregar projetos.</p>';
+        projectsGrid.innerHTML = '<p style="text-align: center; color: var(--gray-600);">Nao foi possivel carregar os projetos agora.</p>';
     }
 }
 
@@ -154,7 +169,12 @@ function renderProjects() {
 
     const cards = state.projects.map((project, index) => createProjectCard(project, index));
 
-    if (state.projectLayout === 'carousel' && cards.length > 0) {
+    if (!cards.length) {
+        projectsGrid.innerHTML = '<p style="text-align: center; color: var(--gray-600);">Nenhum projeto disponivel no momento.</p>';
+        return;
+    }
+
+    if (state.projectLayout === 'carousel') {
         const carousel = createCarousel(cards);
         projectsGrid.appendChild(carousel);
         state.carouselCleanup = initEnhancedCarousel(carousel, cards.length);
@@ -348,10 +368,10 @@ function createProjectCard(project, index) {
         tabindex: '0'
     });
     const projectNumber = String(index + 1).padStart(2, '0');
-    const imagePath = `images/${project.image}`;
+    const imagePath = getImagePath(project.image);
     card.innerHTML = `
         <div class="project-image">
-            <img src="${imagePath}" alt="${project.title}" loading="lazy">
+            <img src="${imagePath}" alt="${project.title}" loading="lazy" decoding="async" data-fallback-src="images/logo.png">
         </div>
         <div class="project-info">
             <div class="project-meta">
@@ -380,10 +400,12 @@ function createProjectCard(project, index) {
 
 // ===== MODAL =====
 function openModal(project) {
-    const imagePath = `images/${project.image}`;
+    const imagePath = getImagePath(project.image);
 
-    document.getElementById('modalImage').src = imagePath;
-    document.getElementById('modalImage').alt = project.title;
+    const modalImage = document.getElementById('modalImage');
+    modalImage.src = imagePath;
+    modalImage.alt = project.title;
+    modalImage.dataset.fallbackSrc = 'images/logo.png';
     document.getElementById('modalTitle').textContent = project.title;
     document.getElementById('modalDescription').textContent = project.description;
     
@@ -426,6 +448,20 @@ function setupImageFallbacks() {
             if (!fallbackSrc) return;
             image.src = fallbackSrc;
         }, { once: true });
+    });
+}
+
+function setupPreferredImages() {
+    document.querySelectorAll('img[data-preferred-src]').forEach((image) => {
+        const preferredSrc = image.dataset.preferredSrc;
+        if (!preferredSrc) return;
+
+        const preferredImage = new Image();
+        preferredImage.decoding = 'async';
+        preferredImage.onload = () => {
+            image.src = preferredSrc;
+        };
+        preferredImage.src = preferredSrc;
     });
 }
 
@@ -539,6 +575,7 @@ function observeAnimatedElements() {
 // ===== INITIALIZE =====
 document.addEventListener('DOMContentLoaded', () => {
     setupImageFallbacks();
+    setupPreferredImages();
     setupInstagramEmbeds();
     observeAnimatedElements();
     loadProjects();

@@ -5,13 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anderson Jr. | Desenvolvedor Full Stack</title>
     <meta name="description" content="Portfólio profissional de Anderson Jr. - Desenvolvedor Full Stack especializado em criar soluções web modernas e eficientes.">
+    <meta name="theme-color" content="#258d19">
+    <meta property="og:title" content="Anderson Jr. | Desenvolvedor Full Stack">
+    <meta property="og:description" content="Portfólio profissional com projetos, contatos e presença digital de Anderson Jr.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/logo.png">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="images/logo.ico" type="image/x-icon">
-    <link rel="preload" as="image" href="images/anderson2.png">
+    <link rel="preload" as="image" href="images/anderson.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <a href="#home" class="skip-link">Pular para o conteúdo principal</a>
+
     <!-- Botão Voltar ao Topo -->
     <button id="scrollToTop" class="scroll-to-top" aria-label="Voltar ao topo">
         <i class="fas fa-arrow-up"></i>
@@ -26,6 +34,7 @@
                     <li><a href="#home">Início</a></li>
                     <li><a href="#about">Sobre</a></li>
                     <li><a href="#projects">Projetos</a></li>
+                    <li><a href="#instagram">Instagram</a></li>
                     <li><a href="#contact">Contato</a></li>
                 </ul>
                 <button class="menu-toggle" id="menuToggle" aria-label="Menu">
@@ -43,9 +52,14 @@
                     <div class="hero-tag">Desenvolvedor Full Stack</div>
                     <h1 class="hero-title">ANDERSON JR.</h1>
                     <p class="hero-subtitle">Transformo ideias em soluções digitais profissionais, funcionais e eficientes.</p>
+                    <div class="hero-highlights" aria-label="Destaques profissionais">
+                        <span>Sites institucionais</span>
+                        <span>Interfaces responsivas</span>
+                        <span>Integração front-end e back-end</span>
+                    </div>
                     <div class="hero-stats">
                         <div class="stat">
-                            <span class="stat-number">5+</span>
+                            <span class="stat-number" id="heroProjectsCount">5+</span>
                             <span class="stat-label">Projetos Completos</span>
                         </div>
                         <div class="stat">
@@ -69,7 +83,7 @@
                 <div class="hero-visual">
                     <div class="hero-photo-frame">
                         <div class="hero-photo-ring">
-                            <img src="images/anderson2.png" alt="Foto de Anderson Jr." class="hero-photo" data-fallback-src="images/anderson.png" fetchpriority="high" decoding="async">
+                            <img src="images/anderson.png" alt="Foto de Anderson Jr." class="hero-photo" data-preferred-src="images/anderson2.png" data-fallback-src="images/anderson.png" fetchpriority="high" decoding="async">
                         </div>
                     </div>
                     <div class="hero-badge">
@@ -156,14 +170,24 @@
             </div>
             <div class="projects-shell">
                 <div class="projects-intro">
-                    <p class="projects-lead">Seleção dos trabalhos que melhor representam meu cuidado com interface, experiência e desenvolvimento completo.</p>
-                    <div class="projects-hint">
+                    <div class="projects-copy">
+                        <p class="projects-lead">Seleção dos trabalhos que melhor representam meu cuidado com interface, experiência e desenvolvimento completo.</p>
+                        <div class="projects-summary" id="projectsSummary" aria-label="Resumo dos projetos">
+                            <span class="summary-chip"><strong id="projectsCount">0</strong> projetos</span>
+                            <span class="summary-chip"><strong id="projectsTechCount">0</strong> tecnologias</span>
+                            <span class="summary-chip">Atualizado <strong>2026</strong></span>
+                        </div>
+                    </div>
+                    <div class="projects-hint" role="note">
                         <i class="fas fa-arrow-pointer"></i>
-                        <span>Clique em um card para ver mais detalhes</span>
+                        <span>Navegue pelo carrossel ou clique em um card para abrir o projeto</span>
                     </div>
                 </div>
                 <div class="projects-grid" id="projectsGrid">
-                    <!-- Projects will be loaded here -->
+                    <div class="projects-loading" aria-hidden="true">
+                        <div class="project-skeleton"></div>
+                        <div class="project-skeleton"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -179,7 +203,7 @@
             <div class="instagram-showcase instagram-showcase-wide">
                 <div class="instagram-header">
                     <div class="instagram-profile">
-                        <img src="images/anderson2.png" alt="Foto de perfil de Anderson Jr." class="instagram-avatar" data-fallback-src="images/anderson.png" loading="lazy" decoding="async">
+                        <img src="images/anderson.png" alt="Foto de perfil de Anderson Jr." class="instagram-avatar" data-preferred-src="images/anderson2.png" data-fallback-src="images/anderson.png" loading="lazy" decoding="async">
                         <div>
                             <span class="instagram-label">Instagram Oficial</span>
                             <h3>@andersonjr0667</h3>
