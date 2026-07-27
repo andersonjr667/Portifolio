@@ -1,134 +1,408 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfólio de Anderson Jr, desenvolvedor web full stack">
-    <meta name="keywords" content="Portfólio, Anderson Jr, Desenvolvedor Web, Full Stack">
-    <meta name="author" content="Anderson Jr">
-    <title>Portfólio - Anderson Jr</title>
+    <title>Anderson Jr. | Desenvolvimento Web Profissional</title>
+    <meta name="description" content="Portfólio de Anderson Jr., desenvolvedor full stack focado em criar experiências web modernas, responsivas e orientadas a resultado.">
+    <meta name="theme-color" content="#0f1a0d">
+    <meta property="og:title" content="Anderson Jr. | Desenvolvimento Web Profissional">
+    <meta property="og:description" content="Projetos, contatos e presença digital de Anderson Jr. em um portfólio moderno e profissional.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="images/logo.ico" type="image/x-icon">
+    <link rel="preload" as="image" href="images/anderson.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <header>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#sobre">Sobre Mim</a></li>
-                <li><a href="#habilidades">Habilidades</a></li>
-                <li><a href="#projetos">Projetos</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
-        </nav>
-        <div class="header-content">
-            <img src="images/anderson.png" alt="Minha imagem" class="profile-img">
-            <div class="header-text">
-                <h1>Anderson Jr</h1>
-                <p>Desenvolvedor Web Full Stack</p>
-            </div>
+<body class="site-redesign">
+    <a href="#home" class="skip-link">Pular para o conteúdo principal</a>
+
+    <!-- Botão Voltar ao Topo -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Botão flutuante WhatsApp -->
+    <a href="https://wa.me/5531971533882" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Falar no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-float-label">Orçamento Grátis</span>
+    </a>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#home" class="logo">ANDERSON JR.</a>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#process">Processo</a></li>
+                    <li><a href="#projects">Projetos</a></li>
+                    <li><a href="#instagram">Instagram</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+                <a href="https://wa.me/5531971533882" target="_blank" rel="noopener noreferrer" class="btn btn-primary nav-cta">Falar comigo</a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
         </div>
     </header>
-    <main>
-        <section id="sobre">
-            <h2>Sobre Mim</h2>
-            <p>Me chamo Anderson Jr., nasci em 10 de janeiro de 2009 e atuo como desenvolvedor web full stack desde 2023. Sou apaixonado por tecnologia e inovação, sempre em busca de novos desafios e aprimoramento contínuo. Trabalho no desenvolvimento de aplicações modernas, responsivas e eficientes, utilizando as mais recentes tecnologias do mercado. Tenho experiência em criar soluções escaláveis e otimizadas, focando em performance, usabilidade e boas práticas de programação.</p>
-        </section>
-        <section id="habilidades">
-            <h2>Habilidades</h2>
-            <ul>
-                <li>HTML, CSS, JavaScript</li>
-                <li>Python, Node.js</li>
-                <li>Banco de Dados SQL e NoSQL</li>
-            </ul>
-        </section>
-        <section id="projetos">
-            <h2>Meus Projetos</h2>
-            <div class="projects">
-                <div class="project">
-                    <a href="https://andersonjr667.github.io/MaxOnu-/" target="_blank">
-                        <img src="images/project1.png" alt="MaxOnu 2024">
-                        <div class="project-info">
-                            <h3>MaxOnu 2024</h3>
-                            <p>Projeto de simulação da ONU para estudantes, desenvolvido com tecnologias modernas.</p>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg" aria-hidden="true">
+            <div class="hero-bg-grid"></div>
+            <div class="hero-bg-glow hero-bg-glow--one"></div>
+            <div class="hero-bg-glow hero-bg-glow--two"></div>
+        </div>
+        <div class="container">
+            <div class="hero-layout">
+                <div class="hero-content">
+                    <div class="hero-tag">Seu site vendendo por você</div>
+                    <h1 class="hero-title">ANDERSON JR.</h1>
+                    <p class="hero-subtitle">Seu negócio merece um site que vende por você, 24 horas por dia. Rápido, claro e feito para quem chega pelo Instagram.</p>
+                    <div class="hero-highlights" aria-label="Destaques profissionais">
+                        <span>Presença online que converte</span>
+                        <span>Design simples para vender</span>
+                        <span>Funciona bem em qualquer celular</span>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number" id="heroProjectsCount" data-count-target="3" data-count-suffix="+">3</span>
+                            <span class="stat-label">Cases entregues</span>
                         </div>
+                        <div class="stat">
+                            <span class="stat-number" data-count-target="4">4</span>
+                            <span class="stat-label">Anos trazendo resultado</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-count-target="100" data-count-suffix="%">100%</span>
+                            <span class="stat-label">Satisfação de clientes</span>
+                        </div>
+                    </div>
+                    <div class="hero-cta">
+                        <a href="#contact" class="btn btn-primary">
+                            <span>Chamar no WhatsApp agora</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#projects" class="btn btn-outline">
+                            <i class="fas fa-list"></i>
+                            <span>Ver projetos reais</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                <div class="hero-photo-frame">
+                    <div class="hero-photo-ring">
+                        <img src="images/anderson.png" alt="Foto de Anderson Jr." class="hero-photo" data-preferred-src="images/anderson2.png" data-fallback-src="images/anderson.png" fetchpriority="high" decoding="async">
+                    </div>
+                </div>
+                <div class="hero-badge">
+                    <i class="fab fa-instagram"></i>
+                    <span>@andersonjr0667</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="insta-banner">
+        <div class="container">
+            <div class="insta-banner-card">
+                <p><strong>Vindo do Instagram?</strong> Aqui você vê os projetos completos, os resultados dos clientes e como funciona cada etapa do processo.</p>
+                <a href="#instagram" class="btn btn-outline">Ver bastidores</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Sobre</span>
+                <h2 class="section-title">Quem Está Por Trás dos Projetos</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="lead">Meu objetivo é fazer seu negócio aparecer e vender melhor online. Crio sites simples, rápidos e fáceis de usar para quem chega pelo Instagram.</p>
+                    <p>Esse portfólio mostra trabalhos que ajudam clientes a ganhar credibilidade, gerar contatos e vender mais pelas redes sociais. Tudo pensado para funcionar como site estático, sem servidor próprio.</p>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check-circle"></i> <strong>Site rápido</strong> - Para seu cliente não perder tempo.</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Design que passa confiança</strong> - Faz seu negócio parecer mais profissional.</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Funciona em qualquer celular</strong> - Do Instagram ao WhatsApp com boa experiência.</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Pronto para crescer</strong> - Seu site fica preparado para vender mais depois.</li>
+                    </ul>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Visual que impressiona</h3>
+                        <p>Primeira impressão positiva para quem visita seu perfil e clica no link.</p>
+                        <div class="skill-tags">
+                            <span>Design</span>
+                            <span>Copy</span>
+                            <span>UX</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Tudo funcionando sem travar</h3>
+                        <p>Página rápida e estável, para o cliente não desistir antes de falar com você.</p>
+                        <div class="skill-tags">
+                            <span>Performance</span>
+                            <span>Mobile</span>
+                            <span>Interação</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Seus dados protegidos</h3>
+                        <p>Contato seguro e organizado, sem precisar de servidor próprio.</p>
+                        <div class="skill-tags">
+                            <span>Formulário</span>
+                            <span>WhatsApp</span>
+                            <span>Segurança</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="process">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Processo</span>
+                <h2 class="section-title">Do Briefing ao Site no Ar</h2>
+                <p class="section-subtitle">Um fluxo claro para você acompanhar cada etapa — sem surpresas, com foco em resultado.</p>
+            </div>
+            <div class="process-grid">
+                <article class="process-step">
+                    <span class="process-step-number">01</span>
+                    <h3>Você conta sua ideia</h3>
+                    <p>Entendo o que você quer vender e como seu público no Instagram se conecta com isso.</p>
+                </article>
+                <article class="process-step">
+                    <span class="process-step-number">02</span>
+                    <h3>Eu monto o plano</h3>
+                    <p>Faço um esboço simples do site com foco em resultado e facilidade de uso.</p>
+                </article>
+                <article class="process-step">
+                    <span class="process-step-number">03</span>
+                    <h3>Eu construo o site</h3>
+                    <p>Desenvolvo a página com animações suaves, botão de WhatsApp e layout para vender.</p>
+                </article>
+                <article class="process-step">
+                    <span class="process-step-number">04</span>
+                    <h3>Você recebe pronto</h3>
+                    <p>Seu site no ar, com suporte para ajustes e pronto para receber mensagens.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Portfólio</span>
+                <h2 class="section-title">Cases de Sucesso</h2>
+                <p class="section-subtitle">Projetos reais que mostram como design, tecnologia e estratégia se unem para gerar resultados</p>
+            </div>
+            <div class="projects-shell">
+                <div class="projects-intro">
+                            <p class="projects-lead">Cada projeto mostra como um site simples e claro pode virar cliente em potencial para seu negócio. Toque nas setas ou nos pontos para ver os detalhes.</p>
+                        <div class="projects-summary" id="projectsSummary" aria-label="Resumo dos projetos">
+                            <span class="summary-chip"><strong id="projectsCount">0</strong> projetos</span>
+                            <span class="summary-chip"><strong id="projectsTechCount">0</strong> tecnologias</span>
+                            <span class="summary-chip">Portfólio atualizado em <strong>2026</strong></span>
+                        </div>
+                    </div>
+                    <div class="projects-hint" role="note">
+                        <i class="fas fa-arrow-pointer"></i>
+                        <span>Navegue pelo carrossel e abra cada projeto para ver detalhes, tecnologias e acesso ao resultado</span>
+                    </div>
+                </div>
+                <div class="projects-grid" id="projectsGrid">
+                    <div class="projects-loading" aria-hidden="true">
+                        <div class="project-skeleton"></div>
+                        <div class="project-skeleton"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="instagram" class="instagram-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Instagram</span>
+                <h2 class="section-title">Conteúdo, Bastidores e Atualizações</h2>
+                <p class="section-subtitle">Um espaço para acompanhar minha presença digital, referências visuais e o que venho desenvolvendo.</p>
+            </div>
+            <div class="instagram-showcase instagram-showcase-wide">
+                <div class="instagram-header">
+                    <div class="instagram-profile">
+                        <img src="images/anderson.png" alt="Foto de perfil de Anderson Jr." class="instagram-avatar" data-preferred-src="images/anderson2.png" data-fallback-src="images/anderson.png" loading="lazy" decoding="async">
+                        <div>
+                            <span class="instagram-label">Perfil Oficial</span>
+                            <h3>@andersonjr0667</h3>
+                            <p>Conteúdos, bastidores de projetos e atualizações da minha jornada no desenvolvimento web.</p>
+                        </div>
+                    </div>
+                    <a href="https://www.instagram.com/andersonjr0667/" target="_blank" rel="noopener noreferrer" class="btn btn-outline instagram-btn">
+                        <i class="fab fa-instagram"></i>
+                        <span>Acessar Perfil</span>
                     </a>
                 </div>
-                <div class="project">
-                    <a href="https://andersonjr667.github.io/MaxOnu-/" target="_blank">
-                        <img src="images/project5.png" alt="MaxOnu 2025">
-                        <div class="project-info">
-                            <h3>MaxOnu 2025</h3>
-                            <p>Atualização do projeto MaxOnu com novas funcionalidades e melhorias de performance.</p>
-                        </div>
-                    </a>
+                <div class="instagram-posts instagram-posts-large">
+                    <div class="instagram-embed-card">
+                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DWOlUKpDHdt/" data-instgrm-version="14"></blockquote>
+                    </div>
+                    <div class="instagram-embed-card">
+                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DWWToasjVKI/" data-instgrm-version="14"></blockquote>
+                    </div>
+                    <div class="instagram-embed-card">
+                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DV8WAguAeOJ/" data-instgrm-version="14"></blockquote>
+                    </div>
                 </div>
-                <div class="project">
-                    <a href="https://andersonjr667.github.io/Thiago-Vieira/index.html" target="_blank">
-                        <img src="images/project2.png" alt="Thiago Vieira - Arquiteto e Empresário">
-                        <div class="project-info">
-                            <h3>Thiago Vieira - Arquiteto e Empresário</h3>
-                            <p>Site para arquiteto e empresário, destacando seus projetos e serviços.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Contato</span>
+                <h2 class="section-title">Quer um site assim para o seu negócio? Fale comigo agora.</h2>
+                <p class="section-subtitle">Use o WhatsApp direto ou envie sua ideia pelo formulário. Sem servidor próprio, tudo via ferramenta externa para funcionar como site estático.</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-card contact-card-highlight">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
                         </div>
-                    </a>
+                        <h3>WhatsApp <span class="contact-badge">Mais rápido</span></h3>
+                        <a href="https://wa.me/5531971533882" target="_blank" rel="noopener noreferrer">(31) 97153-3882</a>
+                        <p class="contact-card-hint">Resposta em minutos</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Mensagem rápida</h3>
+                        <p>Prefere mesmo ir pelo WhatsApp? Clique no botão fixo no canto.</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <h3>GitHub</h3>
+                        <a href="https://github.com/andersonjr667" target="_blank" rel="noopener noreferrer">andersonjr667</a>
+                    </div>
                 </div>
-                <div class="project">
-                    <a href="https://andersonjr667.github.io/MaxFit/" target="_blank">
-                        <img src="images/project3.png" alt="MaxFit">
-                        <div class="project-info">
-                            <h3>MaxFit</h3>
-                            <p>Site de uma academia fitness onde as pessoas possam assinar planos e entrar em contato com a academia.</p>
+                <div class="contact-form-wrapper">
+                    <form id="contactForm" class="contact-form" action="https://formspree.io/f/your-form-id" method="POST" target="_blank">
+                        <input type="hidden" name="_subject" value="Novo pedido de orçamento">
+                        <div class="form-group">
+                            <input type="text" name="name" id="name" placeholder="Seu nome" required>
                         </div>
-                    </a>
+                        <div class="form-group">
+                            <input type="email" name="email" id="email" placeholder="Seu melhor e-mail" required>
+                        </div>
+                        <div class="form-group">
+                            <select name="objetivo" id="objetivo" required>
+                                <option value="" disabled selected>Qual o principal objetivo do seu projeto?</option>
+                                <option value="site-institucional">Site institucional / Presença online</option>
+                                <option value="loja-vendas">Loja virtual / Aumentar vendas</option>
+                                <option value="landing-page">Landing page / Capturar leads</option>
+                                <option value="portifolio">Atualizar portfólio / Portais</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" id="message" rows="4" placeholder="Conte seu desejo em poucas palavras" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <span>Enviar pelo Formulário</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                    <p class="contact-note">Ou use o botão do WhatsApp fixo no canto para um atendimento ainda mais rápido.</p>
                 </div>
-                <div class="project">
-                    <a href="https://boaparte.onrender.com/" target="_blank">
-                        <img src="images/project4.png" alt="Boa Parte">
-                        <div class="project-info">
-                            <h3>Boa Parte</h3>
-                            <p>Plataforma de gestão dos visitantes de uma igreja facilitando a visualização dos visitantes.</p>
-                        </div>
-                    </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>ANDERSON JR.</h3>
+                    <p>Desenvolvimento web com foco em clareza, performance e presença profissional.</p>
                 </div>
-                <div class="project">
-                    <a href="https://escoladeesporte.onrender.com/" target="_blank">
-                        <img src="images/project6.png" alt="Escola de Esporte">
-                        <div class="project-info">
-                            <h3>Escola de Esporte</h3>
-                            <p>Plataforma para gestão de atividades esportivas e inscrição de alunos em uma escola de esportes.</p>
-                        </div>
+                <div class="footer-social">
+                    <a href="https://wa.me/5531971533882" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
                     </a>
-                </div>
-                <div class="project">
-                    <a href="https://novoprojeto.onrender.com/" target="_blank">
-                        <img src="images/project7.png" alt="Novo Projeto">
-                        <div class="project-info">
-                            <h3>Exemplo de site</h3>
-                            <p>Um exemplo simples de um site que posso desenvolver para você.</p>
-                        </div>
+                    <a href="mailto:alsj1520@gmail.com" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://github.com/andersonjr667" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.instagram.com/andersonjr0667/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
                     </a>
                 </div>
             </div>
-        </section>
-        <section id="contato">
-            <h2>Contato</h2>
-            <p>Email: <a href="mailto:alsj1520@gmail.com">alsj1520@gmail.com</a></p>
-            <p>LinkedIn: <a href="#">linkedin.com/in/seuperfil</a></p>
-            <p>GitHub: <a href="https://github.com/andersonjr667">https://github.com/andersonjr667</a></p>
-        </section>
-    </main>
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 Anderson Jr - Todos os direitos reservados</p>
-            <ul class="social-links">
-                <li><a href="https://linkedin.com/in/seuperfil" target="_blank">LinkedIn</a></li>
-                <li><a href="https://github.com/andersonjr667" target="_blank">GitHub</a></li>
-                <li><a href="mailto:alsj1520@gmail.com">Email</a></li>
-            </ul>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Anderson Jr. Portfólio profissional desenvolvido para apresentar projetos, presença digital e contato.</p>
+            </div>
         </div>
     </footer>
-    <div id="imageModal" class="modal">
-        <span class="close" onclick="closeImage()">&times;</span>
-        <img class="modal-content" id="modalImage">
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal" aria-hidden="true">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <button class="modal-close" id="modalClose" aria-label="Fechar">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-content">
+                <div class="modal-image">
+                    <img id="modalImage" src="" alt="">
+                </div>
+                <div class="modal-body">
+                    <h2 id="modalTitle"></h2>
+                    <p id="modalDescription"></p>
+                    <p id="modalResult" class="modal-result"></p>
+                    <div class="modal-tags" id="modalTags"></div>
+                    <div class="modal-links">
+                        <a id="modalRepo" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                            <i class="fab fa-github"></i> Ver código
+                        </a>
+                        <a id="modalLive" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                            <i class="fas fa-external-link-alt"></i> Acessar projeto
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <script src="script.js"></script>
+
+    <script src="scripts/main.js"></script>
 </body>
 </html>

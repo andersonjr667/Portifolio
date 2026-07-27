@@ -1,0 +1,29 @@
+[
+	{
+		"id": "baboons",
+		"title": "Baboons",
+ 		"description": "Site institucional desenvolvido para um restaurante gourmet, com foco em apresentar a proposta gastronômica da marca de forma sofisticada e atrativa. A plataforma destaca o conceito do restaurante, seu cardápio e a experiência oferecida aos clientes, utilizando um design moderno e navegação intuitiva para transmitir a identidade premium do estabelecimento.",
+		"result": "Aumentou reservas e deixou o restaurante com cara de marca premium.",
+ 		"image": "baboons.png",
+		"url": "https://baboons.onrender.com/",
+		"tags": ["HTML","CSS","JavaScript","Responsividade","Design","UI/UX"]
+	},
+	{
+		"id": "aprendiz-plus",
+		"title": "Aprendiz+",
+ 		"description": "Projeto digital criado com o objetivo de apoiar jovens entre 14 e 24 anos na entrada no mercado de trabalho. A plataforma foi desenvolvida para conectar oportunidades, informações e recursos que auxiliam no desenvolvimento profissional, incentivando a preparação, capacitação e crescimento dos jovens em sua jornada profissional.",
+		"result": "A página ajudou o cliente a apresentar cursos e captar novos alunos pelo site.",
+ 		"image": "aprendiz+.png",
+		"url": "https://aprendiz-plus.onrender.com",
+		"tags": ["HTML","CSS","JavaScript","Responsividade","Design","UI/UX", "MongoDB", "NodeJS", "Backend"]
+	},
+	{
+		"id": "las-lobas",
+		"title": "Las Lobas",
+ 		"description": "Site desenvolvido para um projeto voltado ao fortalecimento e reconexão da essência feminina. A plataforma apresenta conteúdos e informações que incentivam mulheres a redescobrirem sua sensibilidade, presença e autenticidade, promovendo um espaço acolhedor de reflexão, crescimento pessoal e conexão com aquilo que há de mais genuíno em si mesmas.",
+		"result": "Transformou a presença online em um espaço claro para clientes conhecerem o trabalho e agendar serviços.",
+ 		"image": "soulloba.png",
+		"url": "https://laslobas.onrender.com/",
+		"tags": ["HTML","CSS","JavaScript","Responsividade"]
+	}
+]
