@@ -1,0 +1,18 @@
+{
+  "name": "portifolio-andersonjr",
+  "version": "1.0.0",
+  "description": "Ferramentas para otimizar imagens e executar auditoria Lighthouse do portfólio de Anderson Jr.",
+  "scripts": {
+    "optimize-images": "node scripts/optimize-images.js",
+    "start": "python -m http.server 8000",
+    "lighthouse": "lighthouse http://localhost:8000 --output html --output-path reports/lighthouse.html --chrome-flags=\"--no-sandbox\""
+  },
+  "dependencies": {
+    "sharp": "^0.32.4"
+  },
+  "devDependencies": {
+    "lighthouse": "^11.0.0"
+  },
+  "author": "Anderson Jr.",
+  "license": "MIT"
+}
