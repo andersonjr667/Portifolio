@@ -5,6 +5,7 @@ const LOCAL_HOSTS = new Set(['localhost', '127.0.0.1']);
 const header = document.getElementById('header');
 const menuToggle = document.getElementById('menuToggle');
 const navLinks = document.getElementById('navLinks');
+const body = document.body;
 const scrollToTopBtn = document.getElementById('scrollToTop');
 const projectsGrid = document.getElementById('projectsGrid');
 const modal = document.getElementById('projectModal');
@@ -29,6 +30,8 @@ const state = {
 
 function setMenuState(isOpen) {
     navLinks.classList.toggle('active', isOpen);
+    body.classList.toggle('menu-open', isOpen);
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
     const icon = menuToggle.querySelector('i');
 
     icon.classList.toggle('fa-bars', !isOpen);
@@ -140,6 +143,18 @@ scrollToTopBtn.addEventListener('click', () => {
 // ===== MOBILE MENU =====
 menuToggle.addEventListener('click', () => {
     setMenuState(!navLinks.classList.contains('active'));
+});
+
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+        setMenuState(false);
+    }
+});
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && navLinks.classList.contains('active')) {
+        setMenuState(false);
+    }
 });
 
 // Close menu when clicking on a link
