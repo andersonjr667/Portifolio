@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="site-redesign">
-    <a href="#home" class="skip-link">Pular para o conteúdo principal</a>
 
     <!-- Botão Voltar ao Topo -->
     <button id="scrollToTop" class="scroll-to-top" aria-label="Voltar ao topo">
@@ -101,10 +100,10 @@
                         <img src="images/anderson.png" alt="Foto de Anderson Jr." class="hero-photo" data-preferred-src="images/anderson2.png" data-fallback-src="images/anderson.png" fetchpriority="high" decoding="async">
                     </div>
                 </div>
-                <div class="hero-badge">
+                <a href="https://www.instagram.com/andersonjr0667/" target="_blank" rel="noopener noreferrer" class="hero-badge" aria-label="Visitar o Instagram de Anderson Jr.">
                     <i class="fab fa-instagram"></i>
                     <span>@andersonjr0667</span>
-                </div>
+                </a>
             </div>
         </div>
     </section>
@@ -279,67 +278,74 @@
         </div>
     </section>
 
+    <section id="linkedin" class="linkedin-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">LinkedIn</span>
+                <h2 class="section-title">Minha presença profissional em um só lugar</h2>
+                <p class="section-subtitle">Conheça um pouco mais da minha trajetória, experiências e projetos com foco em desenvolvimento web e soluções digitais.</p>
+            </div>
+            <div class="linkedin-content">
+                <div class="linkedin-copy">
+                    <h3>Mais do que um portfólio: um espaço para mostrar evolução e trabalho</h3>
+                    <p>Meu LinkedIn reúne informações sobre projetos, entregas, formação e conexões com clientes e parceiros. É onde mostro minha abordagem prática, foco em resultado e interesse por soluções digitais que realmente funcionam.</p>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check-circle"></i> Experiência com desenvolvimento web e interfaces.</li>
+                        <li><i class="fas fa-check-circle"></i> Projetos com foco em performance, UX e clareza.</li>
+                        <li><i class="fas fa-check-circle"></i> Conexões com empresas, clientes e colegas da área.</li>
+                    </ul>
+                    <a href="https://www.linkedin.com/in/andersonjr667/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Abrir perfil no LinkedIn</a>
+                </div>
+                <div class="linkedin-card">
+                    <div class="li-badge-shell">
+                        <div class="badge-base LI-profile-badge" data-locale="pt_BR" data-size="large" data-theme="dark" data-type="HORIZONTAL" data-vanity="andersonjr0667" data-version="v1">
+                            <a class="badge-base__link LI-simple-link" href="https://br.linkedin.com/in/andersonjr0667?trk=profile-badge">Veja o perfil de Anderson Júnior</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Contato</span>
-                <h2 class="section-title">Quer um site assim para o seu negócio? Fale comigo agora.</h2>
-                <p class="section-subtitle">Use o WhatsApp direto ou envie sua ideia pelo formulário. Sem servidor próprio, tudo via ferramenta externa para funcionar como site estático.</p>
+                <h2 class="section-title">Vamos conversar e transformar sua ideia em algo profissional.</h2>
+                <p class="section-subtitle">Escolha o canal que for mais confortável para você e fale comigo direto.</p>
             </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-card contact-card-highlight">
+            <div class="contact-shell">
+                <div class="contact-highlight-card">
+                    <div class="contact-highlight-badge">Resposta rápida</div>
+                    <h3>Atendimento direto para projetos, orçamento e dúvidas.</h3>
+                    <p>Se você quer um site claro, moderno e pensado para vender, posso ajudar com estratégia, estrutura e execução.</p>
+                </div>
+                <div class="contact-grid">
+                    <a href="https://wa.me/5531971533882" target="_blank" rel="noopener noreferrer" class="contact-card contact-card-highlight contact-card--whatsapp">
                         <div class="contact-icon">
                             <i class="fab fa-whatsapp"></i>
                         </div>
-                        <h3>WhatsApp <span class="contact-badge">Mais rápido</span></h3>
-                        <a href="https://wa.me/5531971533882" target="_blank" rel="noopener noreferrer">(31) 97153-3882</a>
-                        <p class="contact-card-hint">Resposta em minutos</p>
-                    </div>
-                    <div class="contact-card">
+                        <h3>WhatsApp</h3>
+                        <p>(31) 97153-3882</p>
+                        <span>Atendimento direto</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/andersonjr0667/" target="_blank" rel="noopener noreferrer" class="contact-card contact-card--linkedin">
                         <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
+                            <i class="fab fa-linkedin-in"></i>
                         </div>
-                        <h3>Mensagem rápida</h3>
-                        <p>Prefere mesmo ir pelo WhatsApp? Clique no botão fixo no canto.</p>
-                    </div>
-                    <div class="contact-card">
+                        <h3>LinkedIn</h3>
+                        <p>Perfil profissional</p>
+                        <span>Veja minha trajetória</span>
+                    </a>
+                    <a href="https://www.instagram.com/andersonjr0667/" target="_blank" rel="noopener noreferrer" class="contact-card contact-card--instagram">
                         <div class="contact-icon">
-                            <i class="fab fa-github"></i>
+                            <i class="fab fa-instagram"></i>
                         </div>
-                        <h3>GitHub</h3>
-                        <a href="https://github.com/andersonjr667" target="_blank" rel="noopener noreferrer">andersonjr667</a>
-                    </div>
-                </div>
-                <div class="contact-form-wrapper">
-                    <form id="contactForm" class="contact-form" action="https://formspree.io/f/your-form-id" method="POST" target="_blank">
-                        <input type="hidden" name="_subject" value="Novo pedido de orçamento">
-                        <div class="form-group">
-                            <input type="text" name="name" id="name" placeholder="Seu nome" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" name="email" id="email" placeholder="Seu melhor e-mail" required>
-                        </div>
-                        <div class="form-group">
-                            <select name="objetivo" id="objetivo" required>
-                                <option value="" disabled selected>Qual o principal objetivo do seu projeto?</option>
-                                <option value="site-institucional">Site institucional / Presença online</option>
-                                <option value="loja-vendas">Loja virtual / Aumentar vendas</option>
-                                <option value="landing-page">Landing page / Capturar leads</option>
-                                <option value="portifolio">Atualizar portfólio / Portais</option>
-                                <option value="outro">Outro</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <textarea name="message" id="message" rows="4" placeholder="Conte seu desejo em poucas palavras" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block">
-                            <span>Enviar pelo Formulário</span>
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
-                    <p class="contact-note">Ou use o botão do WhatsApp fixo no canto para um atendimento ainda mais rápido.</p>
+                        <h3>Instagram</h3>
+                        <p>@andersonjr0667</p>
+                        <span>Conteúdo e bastidores</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -403,6 +409,7 @@
         </div>
     </div>
 
+    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
     <script src="scripts/main.js"></script>
 </body>
 </html>

@@ -575,25 +575,32 @@ function handleResize() {
     }, 120);
 }
 
-modalClose.addEventListener('click', closeModal);
-modalOverlay.addEventListener('click', closeModal);
+if (modalClose) {
+    modalClose.addEventListener('click', closeModal);
+}
+
+if (modalOverlay) {
+    modalOverlay.addEventListener('click', closeModal);
+}
 
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
+    if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
         closeModal();
     }
 });
 
 // ===== FORM SUBMISSION =====
-contactForm.addEventListener('submit', function(e) {
-    // Netlify handles the form submission automatically when deployed
-    // For local testing, show a message
-    if (LOCAL_HOSTS.has(window.location.hostname)) {
-        e.preventDefault();
-        alert('✅ Mensagem enviada com sucesso!\n\nObservacao: em ambiente de producao, o formulario sera processado automaticamente.');
-        contactForm.reset();
-    }
-});
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        // Netlify handles the form submission automatically when deployed
+        // For local testing, show a message
+        if (LOCAL_HOSTS.has(window.location.hostname)) {
+            e.preventDefault();
+            alert('✅ Mensagem enviada com sucesso!\n\nObservacao: em ambiente de producao, o formulario sera processado automaticamente.');
+            contactForm.reset();
+        }
+    });
+}
 
 // ===== INTERSECTION OBSERVER FOR ANIMATIONS =====
 const observerOptions = {
